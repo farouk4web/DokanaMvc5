@@ -1,0 +1,102 @@
+﻿@using Dokana.Resources
+@model Dokana.ViewModels.SiteSettingViewModel
+@{
+    ViewBag.Title = ResourceKeys.siteSetting;
+}
+<div class="siteSetting">
+
+    <form action="/ControlPanel/SaveSiteSetting/" method="post" class="siteForm">
+
+        <h2>@ResourceKeys.siteSetting</h2>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <h4>@ResourceKeys.changeLanguage</h4>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <select name="SiteLanguage"  class="form-control">
+                        @if (Model.SiteLanguage == "ar-EG")
+                        {
+                            <option value="ar-EG" selected>العربية</option>
+                            <option value="en-Au">English</option>
+                        }
+                        else
+                        {
+                            <option value="ar-EG">العربية</option>
+                            <option value="en-Au" selected>English</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+        <hr />
+
+        <div class="row">
+            <div class="col-sm-6">
+                <h4>@ResourceKeys.mainCurrency</h4>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label>@ResourceKeys.inArabic</label>
+                    @Html.TextBoxFor(s => s.CurrencyInArabic, new { @class = "form-control", dir = "rtl" })
+                    @Html.ValidationMessageFor(s => s.CurrencyInArabic)
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label>@ResourceKeys.inEnglish</label>
+                    @Html.TextBoxFor(s => s.CurrencyInEnglish, new { @class = "form-control", dir = "ltr" })
+                    @Html.ValidationMessageFor(s => s.CurrencyInEnglish)
+                </div>
+            </div>
+        </div>
+        <hr />
+
+        <div class="row">
+            <div class="col-sm-6">
+                <h4>@ResourceKeys.shippingFee</h4>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    @Html.TextBoxFor(s => s.ShippingFee, new { @class = "form-control", type = "number" })
+                    @Html.ValidationMessageFor(s => s.ShippingFee)
+                </div>
+            </div>
+        </div>
+        <hr />
+
+        <div class="row">
+            <div class="col-sm-6">
+                <h4>@ResourceKeys.cashOnDelivaryFee</h4>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    @Html.TextBoxFor(s => s.CashOnDelivaryFee, new { @class = "form-control", type = "number" })
+                    @Html.ValidationMessageFor(s => s.CashOnDelivaryFee)
+                </div>
+            </div>
+        </div>
+        <hr />
+
+        <div class="form-group">
+            @Html.AntiForgeryToken()
+            <button type="submit" class="btn btn-primary btn-lg">
+                @ResourceKeys.save
+            </button>
+        </div>
+
+    </form>
+
+</div>
+
+@section styles {
+    @Styles.Render("~/siteForm")
+}
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

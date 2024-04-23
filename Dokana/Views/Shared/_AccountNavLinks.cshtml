@@ -1,0 +1,67 @@
+﻿@using Dokana.Resources
+@using Dokana.Models
+
+<ul class="nav navbar-nav navbar-right">
+
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <i class="glyphicon glyphicon-user"></i> <span> @ResourceKeys.account</span>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+                <a href="/Manage/">
+                    <i class="glyphicon glyphicon-cog"></i>
+                    @ResourceKeys.myAaccount
+                </a>
+            </li>
+
+            <li>
+                <a href="/favorites/">
+                    <i class="glyphicon glyphicon-heart-empty"></i>
+                    @ResourceKeys.myFavorites
+                </a>
+            </li>
+
+            <li>
+                <a href="/Orders/">
+                    <i class="glyphicon glyphicon-book"></i>
+                    @ResourceKeys.myOrders
+                </a>
+            </li>
+
+            @if (User.IsInRole(RoleName.SuperAdmins) || User.IsInRole(RoleName.Admins) || User.IsInRole(RoleName.Sellers)|| User.IsInRole(RoleName.ShippingStaff))
+            {
+                <li>
+                    <a href="/ControlPanel/">
+                        <i class="glyphicon glyphicon-queen"></i> @ResourceKeys.controlPanel
+                    </a>
+                </li>
+            }
+
+            @if (Request.IsAuthenticated)
+            {
+                using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "hidden" }))
+                {
+                    @Html.AntiForgeryToken()
+                }
+                <li>
+                    <a href="javascript:document.getElementById('logoutForm').submit()" class="btn btn-primary">
+                        @ResourceKeys.signOut
+                    </a>
+                </li>
+            }
+            else
+            {
+                <li>
+                    <a href="/account/Login" class="btn btn-primary" id="loginLink">
+                        @ResourceKeys.signIn
+                    </a>
+                </li>
+            }
+
+        </ul>
+    </li>
+
+</ul>
+
+

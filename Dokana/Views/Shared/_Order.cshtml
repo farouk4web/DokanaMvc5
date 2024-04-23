@@ -1,0 +1,30 @@
+﻿@using Dokana.Resources
+
+@model Dokana.Models.Order
+
+<div class="order">
+    <h3>@ResourceKeys.orderedIn: @Model.DateOfCreate</h3>
+    <p>
+        @ResourceKeys.grandTotal:
+        <span class="price">
+            <b>EGB</b>
+            <span>@Model.GrandTotal</span>
+        </span>
+    </p>
+    <div class="row">
+        <div class="col-sm-6">
+            @if (Model.IsDone == true)
+            {
+                <span class="state isDone">@ResourceKeys.isDone</span>
+            }
+            else
+            {
+                <span class="state">@ResourceKeys.underProcessing</span>
+            }
+        </div>
+
+        <div class="col-sm-6">
+            <a href="/@ViewData["controllerName"]/OrderInDetails/@Model.Id" class="btn btn-primary">@ResourceKeys.goToDetails >>></a>
+        </div>
+    </div>
+</div>

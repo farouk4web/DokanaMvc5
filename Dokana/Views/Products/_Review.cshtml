@@ -1,0 +1,23 @@
+﻿@model Dokana.Models.Review
+
+<div class="rate">
+    <div class="row">
+        <div class="col-sm-6">
+            <a href="/users/UserAccount/@Model.UserId">
+                <img src="@Model.User.ProfileImageSrc" alt="" width="50" height="50" class="img-circle img-responsive img-thumbnail" />
+                <b>@Model.User.FullName</b>
+            </a>
+        </div>
+        <div class="col-sm-6 text-right">
+            @for (int i = 0; i < Model.StarsCount; i++)
+            {
+                <i class="glyphicon glyphicon-star"></i>
+            }
+                <br /><span>(@Model.DateOfCreate.ToShortDateString())</span>
+        </div>
+    </div>
+
+    <p>
+        @Model.Comment
+    </p>
+</div>

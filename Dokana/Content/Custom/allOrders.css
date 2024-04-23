@@ -1,0 +1,39 @@
+﻿/* start all orders */
+.order {
+    background-color: var(--whiteColor);
+    margin-bottom: 10px;
+    padding: 10px 20px;
+}
+
+.order .state {
+    font-weight: normal;
+    letter-spacing: 1px;
+    font-size: 14px;
+    padding: 8px;
+    border-radius: 0;
+    background-color: var(--bgColor);
+    display: block;
+    text-align: center;
+    width: 100%;
+}
+
+.order .state.isDone {
+    background-color: green;
+    color: var(--whiteFontColor);
+}
+
+.order .btn {
+    height: auto;
+    width: 100%;
+    padding: 8px;
+}
+
+.actions .role {
+    margin-bottom: 20px
+}
+
+.allOrders .dropdown-menu > li > a {
+    color: #000;
+}
+/* end all orders */
+

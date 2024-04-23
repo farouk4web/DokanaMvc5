@@ -1,0 +1,11 @@
+﻿@using Dokana.Resources
+
+<form action="/Home/Search/" method="get" class="navbar-form navbar-right">
+    <div class="form-group">
+        <input type="search" class="form-control" required name="q" placeholder="@ResourceKeys.searchPlaceholder">
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        <i class="glyphicon glyphicon-search"></i> <span>@ResourceKeys.search</span>
+    </button>
+</form>

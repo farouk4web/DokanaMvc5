@@ -1,0 +1,57 @@
+﻿.favoriteBtn {
+    right: auto;
+    left: 0;
+}
+.navbar i {
+    margin-right: 0;
+    margin-left: 10px;
+}
+.cartItem .actions {
+    right: auto;
+    left: 20px;
+}
+
+.cPanel .dropdown-menu {
+    left: auto;
+    right: 82px;
+}
+.cPanelNav .dropdown-menu,
+.cPanelNav ul {
+    left: auto;
+    right: 0;
+}
+.navbar .dropdown-menu {
+    right: auto;
+    left: 0;
+}
+
+
+.cPanelNav ul a i {
+    padding-left: 10px;
+    padding-right: 0;
+}
+.cPanelNav ul a:hover,
+.cPanelNav ul a:focus {
+    border-left: 3px solid var(--color1);
+    border-left: 0;
+}
+
+.productDetails header img {
+    margin-right: 20px;
+    margin-left: 0;
+}
+
+.productDetails .customersReviews .seeAllLink {
+    margin-left: 10px;
+    margin-right: 0;
+}
+.rate img {
+    margin-left: 15px;
+    margin-right: 0;
+}
+
+
+form.siteForm .pictureButton i {
+    margin-right: 0;
+    margin-left: 10px;
+}

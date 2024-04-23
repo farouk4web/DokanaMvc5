@@ -1,0 +1,23 @@
+﻿/* start order Form */
+.newOrder .siteForm {
+    width: auto;
+}
+.newOrder .cartItemsDetails .details {
+    background-color: var(--whiteColor);
+    padding: 15px;
+    margin-bottom: 20px;
+}
+.newOrder .cartItemsDetails .details h2 {
+    margin: 0 0 20px;
+}
+
+.newOrder .cartItem {
+    margin-bottom: 20px;
+}
+
+.newOrder .totalPrice {
+    background-color: var(--whiteColor);
+    padding: 15px;
+    margin-bottom: 20px;
+}
+/* end order Form */

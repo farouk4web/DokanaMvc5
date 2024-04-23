@@ -1,0 +1,38 @@
+﻿@model Dokana.Models.CartItem
+@{
+    var isInOrder = Model.OrderId == null ? false : true;
+}
+
+<div class="cartItem">
+    <a href="/Products/details/@Model.Product.Id" class="windowLink"></a>
+
+    <div class="row">
+        <div class="col-sm-3">
+            <img src="@Model.Product.ImageSrc" class="img-responsive" alt="" />
+        </div>
+
+        <div class="col-sm-6">
+            <h4 class="productName">@Model.Product.Name</h4>
+            <p class="price">
+                <b>EGB</b>
+                <span>@Model.Product.Price</span>
+            </p>
+        </div>
+
+        <div class="col-sm-3">
+            <div class="actions text-center">
+                @if (isInOrder == true)
+                {
+                    <strong class="badge">@Model.Amount</strong>
+                }
+                else
+                {
+                    <i class="glyphicon glyphicon-minus cartItemBtn text-left" data-action="removeOne" data-itemId="@Model.Id"></i>
+                    <strong>@Model.Amount</strong>
+                    <i class="glyphicon glyphicon-plus cartItemBtn text-right" data-action="addOne" data-itemId="@Model.Id"></i>
+                }
+            </div>
+        </div>
+
+    </div>
+</div>

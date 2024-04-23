@@ -1,0 +1,60 @@
+﻿@using Dokana.Resources
+@using Microsoft.AspNet.Identity
+@model Dokana.ViewModels.SearchResultViewModel
+@{
+    ViewBag.Title = ResourceKeys.searchResult;
+    int nextPageNumber = Model.CurrentPageNumber + 1,
+    previousPageNumber = Model.CurrentPageNumber - 1;
+}
+<div class="search_result">
+    <div class="container">
+        <div class="page-header">
+            <h2>@ResourceKeys.searchResult</h2>
+            <h5><b>@Model.CountOfResults</b> @ResourceKeys.product</h5>
+        </div>
+
+        @if (Model.Products.Count() == 0)
+        {
+            <div class="alert alert-info">
+                <p class="lead">
+                    @ResourceKeys.sorryMsg
+                </p>
+            </div>
+        }
+
+        <div class="row">
+            @foreach (var product in Model.Products)
+            {
+                <div class="col-sm-3">
+                    @Html.Partial("_Product", product)
+                </div>
+            }
+        </div>
+
+        <nav aria-label="..." class="paginationBtns">
+            <ul class="pager">
+                @if (Model.CurrentPageNumber > 1)
+                {
+                    <li class="previous">
+                        <a href="/Home/Search?q=@Model.Query&pageNumber=@previousPageNumber">
+                            <span aria-hidden="true">&larr;</span> @ResourceKeys.older
+                        </a>
+                    </li>
+                }
+                <li class="pageNumber">
+                    @Model.CurrentPageNumber
+                </li>
+                @if (Model.CurrentPageNumber * 20 < Model.CountOfResults)
+                {
+                    <li class="next">
+                        <a href="/Home/Search?q=@Model.Query&pageNumber=@nextPageNumber">
+                            @ResourceKeys.newer <span aria-hidden="true">&rarr;</span>
+                        </a>
+                    </li>
+                }
+            </ul>
+        </nav>
+
+
+    </div>
+</div>

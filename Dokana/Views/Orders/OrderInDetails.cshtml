@@ -1,0 +1,36 @@
+﻿@using Dokana.Resources
+
+@model Dokana.Models.Order
+@{
+    ViewBag.Title = ResourceKeys.oderedAt + " " + Model.DateOfCreate;
+}
+<div class="orderInDetails">
+    <div class="container">
+
+        <div class="page-header">
+            <h2>@ResourceKeys.oderedAt: <time>@Model.DateOfCreate</time></h2>
+
+        </div>
+        
+        @if (Model.IsPaid == false)
+        {
+            <div class="alert alert-warning">
+                <p class="lead">
+                    @ResourceKeys.msg4unCompeletedOrder
+                    <a href="/Orders/Checkout/@Model.Id">@ResourceKeys.here</a>
+                </p>
+            </div>
+        }
+        
+        @Html.Partial("_DetailsOfOrder", Model)
+
+    </div>
+</div>
+
+@section styles {
+    @Styles.Render("~/orderDetails")
+}
+
+@section scripts {
+    @Scripts.Render("~/js/orderActions")
+}

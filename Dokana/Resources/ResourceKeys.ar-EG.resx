@@ -1,0 +1,816 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="addToCart" xml:space="preserve">
+    <value>اضف للسلة</value>
+  </data>
+  <data name="addToFavorite" xml:space="preserve">
+    <value>اضف للمفضلة</value>
+  </data>
+  <data name="appName" xml:space="preserve">
+    <value>كشك</value>
+  </data>
+  <data name="availableToSale" xml:space="preserve">
+    <value>متاح للبيع</value>
+  </data>
+  <data name="categoryDescriptionPlacholder" xml:space="preserve">
+    <value>اكتب وصف القسم هنا</value>
+  </data>
+  <data name="categoryNamePlacholder" xml:space="preserve">
+    <value>اكتب اسم القسم هنا</value>
+  </data>
+  <data name="chooseProductPhoto" xml:space="preserve">
+    <value>إختار صورة المنتج</value>
+  </data>
+  <data name="newCategory" xml:space="preserve">
+    <value>قسم جديد</value>
+  </data>
+  <data name="newer" xml:space="preserve">
+    <value>احدث</value>
+  </data>
+  <data name="newProduct" xml:space="preserve">
+    <value>منتج جديد</value>
+  </data>
+  <data name="older" xml:space="preserve">
+    <value>اقدم</value>
+  </data>
+  <data name="piecesInStore" xml:space="preserve">
+    <value>القطع في المخزن</value>
+  </data>
+  <data name="product" xml:space="preserve">
+    <value>منتج</value>
+  </data>
+  <data name="productCategryPlaceholder" xml:space="preserve">
+    <value>إختار نوع المنتج</value>
+  </data>
+  <data name="productDescriptionPlacholder" xml:space="preserve">
+    <value>اكتب وصف المنتج هنا</value>
+  </data>
+  <data name="productNamePlacholder" xml:space="preserve">
+    <value>اكتب اسم المنتج هنا</value>
+  </data>
+  <data name="requiredMsg" xml:space="preserve">
+    <value>هذا الحقل مطلواب</value>
+  </data>
+  <data name="save" xml:space="preserve">
+    <value>حفظ</value>
+  </data>
+  <data name="seller" xml:space="preserve">
+    <value>بائع</value>
+  </data>
+  <data name="shareThisProduct" xml:space="preserve">
+    <value>شارك المنتج مع اصدقائك</value>
+  </data>
+  <data name="sorryMsg" xml:space="preserve">
+    <value>عذرا لم نجد اي شئ حتي الان</value>
+  </data>
+  <data name="stringLength200_1000" xml:space="preserve">
+    <value>يجب ان يكون مجموع الحروف بين 200 و 1000 حرف</value>
+  </data>
+  <data name="stringLength3_200" xml:space="preserve">
+    <value>يجب ان يكون مجموع الحروف بين 3 و200 حرف</value>
+  </data>
+  <data name="stringLength4_60" xml:space="preserve">
+    <value>يجب ان يكون مجموع الحروف بين 4 و 60 حرف</value>
+  </data>
+  <data name="validInput" xml:space="preserve">
+    <value>هذا الحقل يقبل حروف عربية وإنجليزية فقط</value>
+  </data>
+  <data name="removeFromFavorite" xml:space="preserve">
+    <value>ازل من المفضلة</value>
+  </data>
+  <data name="signIn" xml:space="preserve">
+    <value>تسجيل الدخول</value>
+  </data>
+  <data name="signOut" xml:space="preserve">
+    <value>تسجيل الخروج</value>
+  </data>
+  <data name="categories" xml:space="preserve">
+    <value>الاقسام</value>
+  </data>
+  <data name="checkout" xml:space="preserve">
+    <value>الدفع</value>
+  </data>
+  <data name="cart" xml:space="preserve">
+    <value>السلة</value>
+  </data>
+  <data name="remove" xml:space="preserve">
+    <value>حذف</value>
+  </data>
+  <data name="search" xml:space="preserve">
+    <value>بحث</value>
+  </data>
+  <data name="update" xml:space="preserve">
+    <value>تحديث</value>
+  </data>
+  <data name="stringLength3_500" xml:space="preserve">
+    <value>يجب ان يكون مجموع الحروف بين 3 و 500 حرف</value>
+  </data>
+  <data name="favorites" xml:space="preserve">
+    <value>المفضلة</value>
+  </data>
+  <data name="removeAll" xml:space="preserve">
+    <value>حذف الكل</value>
+  </data>
+  <data name="stringLength250_500" xml:space="preserve">
+    <value>يجب ان يكون مجموع الحروف بين 250 و 500 حرف</value>
+  </data>
+  <data name="min250" xml:space="preserve">
+    <value>يجب ان يكون مجموع الحروف اقل من 250 حرف</value>
+  </data>
+  <data name="details" xml:space="preserve">
+    <value>التفاصيل</value>
+  </data>
+  <data name="shoppingCart" xml:space="preserve">
+    <value>سلة التسوق</value>
+  </data>
+  <data name="requiredPaymentMethod" xml:space="preserve">
+    <value>يجب ان تختار وسيلة دفع لإكمال طلبك</value>
+  </data>
+  <data name="order" xml:space="preserve">
+    <value>طلب</value>
+  </data>
+  <data name="orders" xml:space="preserve">
+    <value>الطلبات</value>
+  </data>
+  <data name="choosePaymentMethod" xml:space="preserve">
+    <value>إختار وسيلة الدفع</value>
+  </data>
+  <data name="city" xml:space="preserve">
+    <value>المدينة</value>
+  </data>
+  <data name="country" xml:space="preserve">
+    <value>الدولة</value>
+  </data>
+  <data name="grandTotal" xml:space="preserve">
+    <value>المبلغ الكلي</value>
+  </data>
+  <data name="mobilePhone" xml:space="preserve">
+    <value>رقم الهاتف</value>
+  </data>
+  <data name="moreAboutAddress" xml:space="preserve">
+    <value>المزيد عن العنوان</value>
+  </data>
+  <data name="products" xml:space="preserve">
+    <value>المنتجات</value>
+  </data>
+  <data name="region" xml:space="preserve">
+    <value>المنطقة / المحافظة</value>
+  </data>
+  <data name="shippingFee" xml:space="preserve">
+    <value>رسوم الشحن</value>
+  </data>
+  <data name="street" xml:space="preserve">
+    <value>الشارع</value>
+  </data>
+  <data name="total" xml:space="preserve">
+    <value>الإجمالي</value>
+  </data>
+  <data name="fullName" xml:space="preserve">
+    <value>الاسم الكامل</value>
+  </data>
+  <data name="cartItems" xml:space="preserve">
+    <value>عناصر السلة</value>
+  </data>
+  <data name="dateOfDone" xml:space="preserve">
+    <value>تاريخ الإتمام</value>
+  </data>
+  <data name="isDone" xml:space="preserve">
+    <value>تم بنجاح</value>
+  </data>
+  <data name="item" xml:space="preserve">
+    <value>عنصر</value>
+  </data>
+  <data name="oderedAt" xml:space="preserve">
+    <value>طُلب في </value>
+  </data>
+  <data name="orderedTo" xml:space="preserve">
+    <value>طُلب ل </value>
+  </data>
+  <data name="paymentMethod" xml:space="preserve">
+    <value>وسيلة الدفع</value>
+  </data>
+  <data name="phone" xml:space="preserve">
+    <value>الهاتف</value>
+  </data>
+  <data name="shippingAmount" xml:space="preserve">
+    <value>مصاريف الشحن</value>
+  </data>
+  <data name="underProcessing" xml:space="preserve">
+    <value>قيد المعالجة</value>
+  </data>
+  <data name="chooseProductImageErrMsg" xml:space="preserve">
+    <value>يجب ان تختار صورة للمنتج اولا</value>
+  </data>
+  <data name="createOrder" xml:space="preserve">
+    <value>إتمام الطلب</value>
+  </data>
+  <data name="cashOnDelivary" xml:space="preserve">
+    <value>الدفع عند الاستلام</value>
+  </data>
+  <data name="cashOnDelivaryDescription" xml:space="preserve">
+    <value>الدفع عند الاستلام هو طريقة دفع تتيح لك الدفع نقدًا  عند وصول طلبك إلى عتبة دارك</value>
+  </data>
+  <data name="email" xml:space="preserve">
+    <value>البريد الإلكتروني</value>
+  </data>
+  <data name="goToDetails" xml:space="preserve">
+    <value>إلي التفاصيل</value>
+  </data>
+  <data name="myOrders" xml:space="preserve">
+    <value>طلباتي</value>
+  </data>
+  <data name="number" xml:space="preserve">
+    <value>رقم</value>
+  </data>
+  <data name="orderedIn" xml:space="preserve">
+    <value>طُلب في</value>
+  </data>
+  <data name="password" xml:space="preserve">
+    <value>كلمة المرور</value>
+  </data>
+  <data name="paypal" xml:space="preserve">
+    <value>باي بال</value>
+  </data>
+  <data name="paypalDescription" xml:space="preserve">
+    <value>طريقة دفع تتيح لك الدفع  عبر بوابة باي بال رسمالتحويل يحددها البنك</value>
+  </data>
+  <data name="visaCard" xml:space="preserve">
+    <value>فيزا كارد</value>
+  </data>
+  <data name="visaCardDescription" xml:space="preserve">
+    <value>طريقة للدفع بإستخدام احد بطاقات الإتمانالمصرفية الخاصة بكم والعملية بكاملها تتم وانت في منزلك</value>
+  </data>
+  <data name="requiredPaymentMethodMsg" xml:space="preserve">
+    <value>يجب ان تختار احد تلك الوسائل لتكمل الطلب</value>
+  </data>
+  <data name="addYourAd" xml:space="preserve">
+    <value>يمكنك إضافة إعلانك هنا </value>
+  </data>
+  <data name="moreItemsLikeThis" xml:space="preserve">
+    <value>المزيد من المنتجات الشبيهة</value>
+  </data>
+  <data name="notAvailableMsg" xml:space="preserve">
+    <value>لا يمكنك ان تطلب هذا المنتج الان لانه غير متاح  للبيع الان</value>
+  </data>
+  <data name="productReviews" xml:space="preserve">
+    <value>مراجعات المنتج</value>
+  </data>
+  <data name="seeAll" xml:space="preserve">
+    <value>رؤية الكل</value>
+  </data>
+  <data name="verifiedCustomerFeedback" xml:space="preserve">
+    <value>التحقق من اراء العملاء</value>
+  </data>
+  <data name="verifiedRating" xml:space="preserve">
+    <value>تقييم محقق</value>
+  </data>
+  <data name="allProductsNotAvailableMsg" xml:space="preserve">
+    <value>عفوا لا يمكنك إتمام هذا الطلب وذلك لأن المنتجات التي طلبتها غير متاحة</value>
+  </data>
+  <data name="allUsersInSite" xml:space="preserve">
+    <value>كل المستخدمين في الموقع</value>
+  </data>
+  <data name="dashboard" xml:space="preserve">
+    <value>اللوحة</value>
+  </data>
+  <data name="lastSignedUsers" xml:space="preserve">
+    <value>اخر المستخدمين المسجلين</value>
+  </data>
+  <data name="reviews" xml:space="preserve">
+    <value>المراجعات</value>
+  </data>
+  <data name="siteStatistics" xml:space="preserve">
+    <value>الإحصائيات</value>
+  </data>
+  <data name="topSellingProducts" xml:space="preserve">
+    <value>المنتجات الأعلي مبيعا</value>
+  </data>
+  <data name="users" xml:space="preserve">
+    <value>المستخدمين</value>
+  </data>
+  <data name="here" xml:space="preserve">
+    <value>هنا</value>
+  </data>
+  <data name="msg4unCompeletedOrder" xml:space="preserve">
+    <value>هذا الطلب لم يكتمل يجب ان تقوم بدفع قيمة الطلب بإستخدام أحد وسائل الدفعالمتاحة لدينا</value>
+  </data>
+  <data name="orderedBy" xml:space="preserve">
+    <value>طُلب بواسطة </value>
+  </data>
+  <data name="cancelOrder" xml:space="preserve">
+    <value>إلغاء الطلب</value>
+  </data>
+  <data name="add2reviewsMsg" xml:space="preserve">
+    <value>لا يمكنك ان تقيم المنتج اكثر من مرة</value>
+  </data>
+  <data name="payProductFirstMsg" xml:space="preserve">
+    <value>يجب ان تشتري هذا المنتج اولا</value>
+  </data>
+  <data name="cancelOrderMsg" xml:space="preserve">
+    <value>تم إلغاء الطلب بنجاح</value>
+  </data>
+  <data name="mainCurrency" xml:space="preserve">
+    <value>العملة الرئيسية</value>
+  </data>
+  <data name="shoppingCartNoItemsMsg" xml:space="preserve">
+    <value>إبدأ في التسوق واختار المنتجات </value>
+  </data>
+  <data name="controlPanel" xml:space="preserve">
+    <value>لوحة التحكم</value>
+  </data>
+  <data name="cancelOrderMsgNo" xml:space="preserve">
+    <value>عفوا لا يمكنك إلغاء الطلبية وذلك لإنك اتممت كل خطوات الدفع</value>
+  </data>
+  <data name="confirmOrder" xml:space="preserve">
+    <value>تأكييد الطلب</value>
+  </data>
+  <data name="deliveredOrder" xml:space="preserve">
+    <value>تسليم الطلب</value>
+  </data>
+  <data name="orderIsConfirmed" xml:space="preserve">
+    <value>تم تأكييد الطلب</value>
+  </data>
+  <data name="orderIsDelivered" xml:space="preserve">
+    <value>تم تسليم الطلب</value>
+  </data>
+  <data name="orderIsShipping" xml:space="preserve">
+    <value>تم شحن الطلب</value>
+  </data>
+  <data name="shippingOrder" xml:space="preserve">
+    <value>شحن الطلب</value>
+  </data>
+  <data name="cancelOrderInfoMsg" xml:space="preserve">
+    <value>إذا كنت تريد ان تقوم بإلغاء هذا الطلب كل ما عليك هو ان تضغط زر "إلغاء الطلب"</value>
+  </data>
+  <data name="orderLevels" xml:space="preserve">
+    <value>مراحل إتمام الطلب</value>
+  </data>
+  <data name="orderLevelsInfo" xml:space="preserve">
+    <value>عندما تكون المرحلة باللون الأخضر هذ يعني انها تمت</value>
+  </data>
+  <data name="inArabic" xml:space="preserve">
+    <value>بالعربية</value>
+  </data>
+  <data name="inEnglish" xml:space="preserve">
+    <value>بالإنجليزية</value>
+  </data>
+  <data name="mainCurrencyFormMsg" xml:space="preserve">
+    <value>هنا يمكنك ان تقوم بتعديل العملة الرئيسية في الموقع</value>
+  </data>
+  <data name="shippingFeeFormMsg" xml:space="preserve">
+    <value>هنا يمكنك تغيير قيمة رسوم الشحن المضافة علي السعر الأجمالي للطلب</value>
+  </data>
+  <data name="developer" xml:space="preserve">
+    <value>فاروق عبدالحميد</value>
+  </data>
+  <data name="developerCopyrights" xml:space="preserve">
+    <value>صمم وطور بكل  ❤️ بواسطة </value>
+  </data>
+  <data name="searchPlaceholder" xml:space="preserve">
+    <value>إبحث عن منتجك</value>
+  </data>
+  <data name="searchResult" xml:space="preserve">
+    <value>نتيجة البحث</value>
+  </data>
+  <data name="changeLanguage" xml:space="preserve">
+    <value>تغيير اللغة</value>
+  </data>
+  <data name="siteSetting" xml:space="preserve">
+    <value>إعدادت الموقع</value>
+  </data>
+  <data name="confirmEmailState" xml:space="preserve">
+    <value>حالة تأكيد البريد الألكتروني</value>
+  </data>
+  <data name="confirmPhoneState" xml:space="preserve">
+    <value>حالة تأكيد رقم الهاتف</value>
+  </data>
+  <data name="noPhoneNumber" xml:space="preserve">
+    <value>لا يوجد رقم هاتف</value>
+  </data>
+  <data name="productNumberLabel" xml:space="preserve">
+    <value>العدد الموجود في المخزن</value>
+  </data>
+  <data name="productPriceLabel" xml:space="preserve">
+    <value>سعر المنتج</value>
+  </data>
+  <data name="login" xml:space="preserve">
+    <value>تسجيل الدخول</value>
+  </data>
+  <data name="register" xml:space="preserve">
+    <value>تسجيل جديد</value>
+  </data>
+  <data name="haveAccountMsg" xml:space="preserve">
+    <value>بالطبع لدي حساب</value>
+  </data>
+  <data name="forgotYourPassword" xml:space="preserve">
+    <value>نسيت كلمة المرور</value>
+  </data>
+  <data name="registerAsNewUser" xml:space="preserve">
+    <value>تسجيل كمستخدم جديد</value>
+  </data>
+  <data name="resetPassword" xml:space="preserve">
+    <value>إعادة تعيين كلمة المرور</value>
+  </data>
+  <data name="sendMeLink" xml:space="preserve">
+    <value>ارسل لي رسالة بالبريد</value>
+  </data>
+  <data name="confirmPassword" xml:space="preserve">
+    <value>تأكيد كلمة المرور</value>
+  </data>
+  <data name="confirmPasswordErrMsg" xml:space="preserve">
+    <value>كلمة المرور وتأكييد كلمة المرور غير متطابقتان</value>
+  </data>
+  <data name="notValidEmailAddressMsg" xml:space="preserve">
+    <value>هذا البريد الالكتروني غير صالح</value>
+  </data>
+  <data name="passwordErrMsgStringLength" xml:space="preserve">
+    <value>اقل عدد من الحروف يجب ان يكون 6 حروف واقصي عدد هو 100</value>
+  </data>
+  <data name="rememberMe" xml:space="preserve">
+    <value>تزكرني؟</value>
+  </data>
+  <data name="addPhoneNumber" xml:space="preserve">
+    <value>اضف رقم الهاتف</value>
+  </data>
+  <data name="changePassword" xml:space="preserve">
+    <value>تغيير كلمة المرور</value>
+  </data>
+  <data name="notValidPhoneNumberMsg" xml:space="preserve">
+    <value>رقم الهاتف هذا غير صالح</value>
+  </data>
+  <data name="phoneNumber" xml:space="preserve">
+    <value>رقم الهاتف</value>
+  </data>
+  <data name="code" xml:space="preserve">
+    <value>كود</value>
+  </data>
+  <data name="currentPassword" xml:space="preserve">
+    <value>كلمة المرور الحالية</value>
+  </data>
+  <data name="newPassword" xml:space="preserve">
+    <value>كلمة مرور جديدة</value>
+  </data>
+  <data name="clickHereToLogIn" xml:space="preserve">
+    <value>إضغط هنا لتسجيل الدخول</value>
+  </data>
+  <data name="forgotPasswordConfirmation" xml:space="preserve">
+    <value>تأكييد نسيان كلمة المرور</value>
+  </data>
+  <data name="forgotPasswordMsg" xml:space="preserve">
+    <value>رجاءا إفحص بريدك الإلكتروني لأإعادة تعيين كلمة المرور</value>
+  </data>
+  <data name="resetPasswordConfirmation" xml:space="preserve">
+    <value>تأكييد إعادة تعيين كلمة المرور</value>
+  </data>
+  <data name="successResetPasswordMsg" xml:space="preserve">
+    <value>تم تغيير كلمة مرورك</value>
+  </data>
+  <data name="add" xml:space="preserve">
+    <value>إضافة</value>
+  </data>
+  <data name="vodafoneCash" xml:space="preserve">
+    <value>فودافون كاش</value>
+  </data>
+  <data name="cashOnDelivaryFee" xml:space="preserve">
+    <value>رسوم الدفع عند الاستلام</value>
+  </data>
+  <data name="cashOnDelivaryFeeFormMsg" xml:space="preserve">
+    <value>هنا يمكنك ان تقوم بتغيير رسوم الدفع عند الإستلام </value>
+  </data>
+  <data name="reviewDescriptionPlacholder" xml:space="preserve">
+    <value>اكتب مراجعتك هنا</value>
+  </data>
+  <data name="appMetaDescription" xml:space="preserve">
+    <value>موقع تسوق الكتروني تم تصميمة وتطويره بواسطة فاروق عبدالحميد باستخدام Asp.net Mvc 5 with EF code first</value>
+  </data>
+  <data name="address" xml:space="preserve">
+    <value>العنوان</value>
+  </data>
+  <data name="addressOfCompany" xml:space="preserve">
+    <value>ابو تشت, قنا, مصر</value>
+  </data>
+  <data name="bestSellerProducts" xml:space="preserve">
+    <value>الاكثر مبيعا</value>
+  </data>
+  <data name="contactWithUs" xml:space="preserve">
+    <value>تواصل معنا</value>
+  </data>
+  <data name="emailOfCompany" xml:space="preserve">
+    <value>kushak@help.com</value>
+  </data>
+  <data name="latestProductsAdded" xml:space="preserve">
+    <value>اخر المنتجات المضافة</value>
+  </data>
+  <data name="whyUs" xml:space="preserve">
+    <value>لماذا نحن</value>
+  </data>
+  <data name="allProducts" xml:space="preserve">
+    <value>كل المنتجات</value>
+  </data>
+  <data name="allProductsDescription" xml:space="preserve">
+    <value>لدينا كل المنتجات التي تحتاجها في حياتك اليومية من اجهزة الكترونية او ملابس او اي شئ ترغب في شراءه</value>
+  </data>
+  <data name="cheap" xml:space="preserve">
+    <value>رخيص</value>
+  </data>
+  <data name="cheapDescription" xml:space="preserve">
+    <value>في موقعنا لدينا ارخص المنتجات في كل الاقسام وذلك لأننا نتعامل مع المصانع والشركات مباشرة بدون وسيط</value>
+  </data>
+  <data name="fastShipping" xml:space="preserve">
+    <value>شحن سريع</value>
+  </data>
+  <data name="fastShippingDescription" xml:space="preserve">
+    <value>لدينا فريق مكون من مسئلي شحن خبراء في مجالهم يعملون بجد حتي يقوموا بإيصال المنتج إليك في الوقت المحدد</value>
+  </data>
+  <data name="support" xml:space="preserve">
+    <value>الدعم</value>
+  </data>
+  <data name="supportDescription" xml:space="preserve">
+    <value>لدينا فريق كامل لمساعدتكم والرد علي إسفساراتكم في اي وقت واي كل يوم 24/7 نحن في خدمتكم</value>
+  </data>
+  <data name="showInSlider" xml:space="preserve">
+    <value>عرض في الرئيسية</value>
+  </data>
+  <data name="accountPassword" xml:space="preserve">
+    <value>كلمة مرور الحساب</value>
+  </data>
+  <data name="accountPhoto" xml:space="preserve">
+    <value>صورة الحساب</value>
+  </data>
+  <data name="addToAdmins" xml:space="preserve">
+    <value>اضف للمديرين</value>
+  </data>
+  <data name="addToSellers" xml:space="preserve">
+    <value>اضف للبائعين</value>
+  </data>
+  <data name="addToShippingStaff" xml:space="preserve">
+    <value>اضف لمسؤلي الشحن</value>
+  </data>
+  <data name="addToSuperAdmins" xml:space="preserve">
+    <value>اضف لملاك الموقع</value>
+  </data>
+  <data name="admins" xml:space="preserve">
+    <value>المديرين</value>
+  </data>
+  <data name="byOrderLevel" xml:space="preserve">
+    <value>رحلة الطلب</value>
+  </data>
+  <data name="change" xml:space="preserve">
+    <value>تغيير</value>
+  </data>
+  <data name="confirmed" xml:space="preserve">
+    <value>مؤكد</value>
+  </data>
+  <data name="confirmEmail" xml:space="preserve">
+    <value>تأكيد البريد الألكتروني</value>
+  </data>
+  <data name="createAnOrder" xml:space="preserve">
+    <value>أطلب المنتجات</value>
+  </data>
+  <data name="delivered" xml:space="preserve">
+    <value>تم تسليمه</value>
+  </data>
+  <data name="getAll" xml:space="preserve">
+    <value>الكل</value>
+  </data>
+  <data name="goToProduct" xml:space="preserve">
+    <value>إلي المنتج</value>
+  </data>
+  <data name="paid" xml:space="preserve">
+    <value>مدفوع</value>
+  </data>
+  <data name="personalInformation" xml:space="preserve">
+    <value>المعلومات الشخصية</value>
+  </data>
+  <data name="removeFromAdmins" xml:space="preserve">
+    <value>إزالة من المديرين</value>
+  </data>
+  <data name="removeFromSellers" xml:space="preserve">
+    <value>ازل من البائعين</value>
+  </data>
+  <data name="removeFromShippingStaff" xml:space="preserve">
+    <value>ازل من مسؤلي الشحن</value>
+  </data>
+  <data name="removeFromSuperAdmins" xml:space="preserve">
+    <value>ازل من ملاك الموقع</value>
+  </data>
+  <data name="sellers" xml:space="preserve">
+    <value>البائعين</value>
+  </data>
+  <data name="shipping" xml:space="preserve">
+    <value>شُحن</value>
+  </data>
+  <data name="shippingStaff" xml:space="preserve">
+    <value>مسؤلي الشحن</value>
+  </data>
+  <data name="sortUsers" xml:space="preserve">
+    <value>فرز المستخدمين</value>
+  </data>
+  <data name="successConfirmEmail" xml:space="preserve">
+    <value>تم تأكييد بريدك الأليكتروني بنجاح رجاءا</value>
+  </data>
+  <data name="superAdmins" xml:space="preserve">
+    <value>ملاك الموقع</value>
+  </data>
+  <data name="thisProductRatedBy" xml:space="preserve">
+    <value>هذا المنتج قيم بواسطة</value>
+  </data>
+  <data name="user" xml:space="preserve">
+    <value>مستخدم</value>
+  </data>
+  <data name="userImageLabel" xml:space="preserve">
+    <value>إختار صورة جديدة</value>
+  </data>
+  <data name="notPaidOrder" xml:space="preserve">
+    <value>لم يتم دفع حساب هذا الطلب</value>
+  </data>
+  <data name="errMsg" xml:space="preserve">
+    <value>عذرآ يبدوا ان هناك مشكلة حاول مرة اخري</value>
+  </data>
+  <data name="removeCategoryWarningMsg" xml:space="preserve">
+    <value>كن حذرآ فأنت ستقوم بحذف هذا القسم إلي الابد لن تستطيع التراجع, إذا كانت هذا القسم يحتوي علي منتج و اكثر سيتم إلغاء هذا الأمر</value>
+  </data>
+  <data name="requiredStarsMsg" xml:space="preserve">
+    <value>عليك تحديد عد النجوم</value>
+  </data>
+  <data name="signToAddProduct" xml:space="preserve">
+    <value>إذا اردت إضافة هذا المنتج عليك تسجل الدخول اولا</value>
+  </data>
+  <data name="warningMsg" xml:space="preserve">
+    <value>هل انت متأكد انك تود فعل ذلك, لا يمكنك التراجع عن هذا الفعل</value>
+  </data>
+  <data name="error" xml:space="preserve">
+    <value>خطأ</value>
+  </data>
+  <data name="errorMsg" xml:space="preserve">
+    <value>عذرآ يبدوا ان هناك مشكلة حاول مرة اخري</value>
+  </data>
+  <data name="loginErrorMsg" xml:space="preserve">
+    <value>هناك خطأ ما في كلمة المرور او البريد الالكتروني</value>
+  </data>
+  <data name="account" xml:space="preserve">
+    <value>حساب</value>
+  </data>
+  <data name="countOfProducts" xml:space="preserve">
+    <value>عدد المنتجات</value>
+  </data>
+  <data name="notConfirmed" xml:space="preserve">
+    <value>غير مؤكد</value>
+  </data>
+  <data name="ad" xml:space="preserve">
+    <value>#إنترنت_غير_محدود_في_مصر</value>
+  </data>
+  <data name="signDate" xml:space="preserve">
+    <value>تاريخ التسجيل</value>
+  </data>
+  <data name="changeLanguageMsg" xml:space="preserve">
+    <value>هنا يمكنك ان تقوم بتغيير اللغة الافتراضية للموقع </value>
+  </data>
+  <data name="myAaccount" xml:space="preserve">
+    <value>حسابي</value>
+  </data>
+  <data name="myFavorites" xml:space="preserve">
+    <value>مفضلتي</value>
+  </data>
+  <data name="setDarkMode" xml:space="preserve">
+    <value>وضع إضائة ليلية</value>
+  </data>
+  <data name="setLightMode" xml:space="preserve">
+    <value>وضع إضائة نهارية</value>
+  </data>
+  <data name="IsNotPaid" xml:space="preserve">
+    <value>غير مدفوع</value>
+  </data>
+  <data name="notPaidOrderMsg" xml:space="preserve">
+    <value>عند دفع حساب هذا الطلب ستظهر هنا المراحل الخاصة بالطلب ك "التاكيد - الشحن التسليم".</value>
+  </data>
+  <data name="chooseAnotherImageErrMsg" xml:space="preserve">
+    <value>نحن لا ندعم صيغة الصورة التي قمت برفعها عليك إرفاق صور صيغتها {png, jpg, jpeg}فقط لا غير</value>
+  </data>
+  <data name="realEmailErrMsg" xml:space="preserve">
+    <value>عذرا نحن نقبل "gmail, yahoo, outlook, hotmail", فقط لا غير عليك استخدام احدهم.</value>
+  </data>
+  <data name="moreProducts" xml:space="preserve">
+    <value>المزيد من المنتجات</value>
+  </data>
+  <data name="home" xml:space="preserve">
+    <value>الرئيسية</value>
+  </data>
+</root>

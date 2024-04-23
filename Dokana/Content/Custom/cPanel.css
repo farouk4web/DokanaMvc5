@@ -1,0 +1,83 @@
+﻿.cPanel h2 {
+    background-color: var(--whiteColor);
+    font-size: 30px;
+    padding: 15px;
+    margin: 0 0 25px;
+}
+.cPanel .dropdown-menu {
+    width: 200px;
+    left: 82px;
+}
+
+
+.cPanelNav {
+    margin-bottom: 30px;
+}
+.cPanelNav .btn {
+    width: 100%;
+}
+.cPanelNav .dropdown-menu,
+.cPanelNav ul {
+    left: 0;
+    width: 100%;
+    background-color: var(--whiteColor);
+    padding: 15px;
+    border-bottom: 2px solid var(--color1);
+}
+.cPanelNav ul a {
+    display: block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: var(--fontColor);
+    border-bottom: 3px solid var(--bgColor);
+}
+
+.cPanelNav ul a i {
+    padding-right: 10px;
+}
+
+.cPanelNav ul a:hover,
+.cPanelNav ul a:focus {
+    border-right: 3px solid var(--color1);
+    background-color: var(--bgColor);
+    color: var(--FontColor);
+    text-decoration: none;
+}
+
+.cPanel form {
+    width: 60%;
+}
+.cPanel .siteSetting form {
+    width: auto
+}
+
+.main_info {
+    margin-bottom: 20px
+}
+.main_info .table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: var(--whiteColor);
+}
+.sorting_tools {
+    background: var(--whiteColor);
+    margin: 20px 0;
+    text-align: center;
+    padding: 10px;
+}
+select.form-control {
+    padding-top:0;
+}
+
+.table {
+    background-color: var(--whiteColor);
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .cPanelNav ul a {
+        font-size: 14px;
+    }
+
+    .cPanelNav .dropdown-menu,
+    .cPanelNav ul {
+        padding: 0;
+    }
+}

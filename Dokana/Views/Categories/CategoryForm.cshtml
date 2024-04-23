@@ -1,0 +1,40 @@
+﻿@using Dokana.Resources
+
+@model Dokana.Models.Category
+@{
+    ViewBag.Title = Model.Id == 0 ? ResourceKeys.newCategory : Model.Name;
+    Layout = "~/Views/ControlPanel/_CPanelLayout.cshtml";
+}
+
+<div class="categoryForm">
+
+    <form action="/Categories/Save" method="post" class="siteForm">
+        <div class="form-group">
+            <h2>@ViewBag.Title</h2>
+        </div>
+
+        <div class="form-group">
+            @Html.ValidationSummary(true)
+        </div>
+
+        <div class="form-group">
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = ResourceKeys.categoryNamePlacholder })
+            @Html.ValidationMessageFor(m => m.Name)
+        </div>
+
+        <div class="form-group">
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(m => m.Id)
+            <button class="btn btn-primary" type="submit">@ResourceKeys.save</button>
+        </div>
+    </form>
+
+</div>
+
+@section styles {
+    @Styles.Render("~/siteForm")
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

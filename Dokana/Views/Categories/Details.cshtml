@@ -1,0 +1,89 @@
+﻿@using Dokana.Resources
+@using Microsoft.AspNet.Identity
+@using Dokana.Models
+
+@model Dokana.ViewModels.CategoryDetailsViewModel
+@{
+    ViewBag.Title = Model.Category.Name;
+    int nextPageNumber = Model.CurrentPageNumber + 1,
+        previousPageNumber = Model.CurrentPageNumber - 1;
+}
+<div class="categoryDetails">
+    <div class="container">
+        <div class="page-header">
+            <h2 class="text-capitalize">@Model.Category.Name</h2>
+            <h5><b>@Model.Category.Products.Count()</b> @ResourceKeys.product</h5>
+
+            @if (User.IsInRole(RoleName.SuperAdmins) || User.IsInRole(RoleName.Admins) || User.IsInRole(RoleName.Sellers)  && Model.Category.UserId == User.Identity.GetUserId())
+            {
+                <div class="actions">
+                    <a href="/Categories/Update/@Model.Category.Id" class="text-warning">
+                        <i class="glyphicon glyphicon-edit"></i>
+                        @ResourceKeys.update
+                    </a>
+
+                    &nbsp; &nbsp; &nbsp;
+
+                    <a class="text-danger" href="#" id="js_remove_category">
+                        <i class="glyphicon glyphicon-trash"></i>
+                        @ResourceKeys.remove
+                    </a>
+
+                    <form action="/categories/Delete/" method="post" id="removeCategoryForm" hidden>
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="id" value="@Model.Category.Id" />
+                    </form>
+                </div>
+            }
+        </div>
+
+        @if (Model.Category.Products.Count() == 0)
+        {
+            <div class="alert alert-info">
+                <p class="lead">
+                    @ResourceKeys.sorryMsg
+                </p>
+            </div>
+        }
+
+        <div class="row">
+            @foreach (var product in Model.Products)
+            {
+                <div class="col-sm-3">
+                    @Html.Partial("_Product", product)
+                </div>
+            }
+        </div>
+
+
+        <nav aria-label="..." class="paginationBtns">
+            <ul class="pager">
+                @if (Model.CurrentPageNumber > 1)
+                {
+                    <li class="previous">
+                        <a href="/Categories/Details/@Model.Category.Id?pageNumber=@previousPageNumber">
+                            <span aria-hidden="true">&larr;</span> @ResourceKeys.older
+                        </a>
+                    </li>
+                }
+                <li class="pageNumber">
+                    @Model.CurrentPageNumber
+                </li>
+
+                @if (Model.CurrentPageNumber * 20 < Model.Category.Products.Count())
+                {
+                    <li class="next">
+                        <a href="/Categories/Details/@Model.Category.Id?pageNumber=@nextPageNumber">
+                            @ResourceKeys.newer <span aria-hidden="true">&rarr;</span>
+                        </a>
+                    </li>
+                }
+            </ul>
+        </nav>
+
+    </div>
+</div>
+
+@section scripts {
+    @Scripts.Render("~/js/categoryActions")
+}

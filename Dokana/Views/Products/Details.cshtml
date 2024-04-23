@@ -1,0 +1,264 @@
+﻿@using Microsoft.AspNet.Identity
+@using Dokana.Resources
+
+@using Dokana.Models
+@model Dokana.ViewModels.ProductDetailsViewModel
+@{
+    ViewBag.Title = Model.Product.Name;
+
+    // check if this product in user favorites or not
+    var favoriteBtnState = "";
+    var favoriteBtnAction = "add";
+
+    if (ViewBag.isFavoriteItem == true)
+    {
+        favoriteBtnState = "active";
+        favoriteBtnAction = "remove";
+    }
+
+    // check if this product in user favorites or not
+    var btnState = ViewBag.isInCart == true ? "disabled" : "";
+}
+
+<div class="productDetails">
+    <div class="container">
+
+        <header>
+            <div class="row">
+                <div class="col-sm-5 col-md-4">
+                    <img src="@Model.Product.ImageSrc" alt="" class="img-responsive center-block" />
+
+                    @if (User.IsInRole(RoleName.SuperAdmins) || User.IsInRole(RoleName.Admins) || User.IsInRole(RoleName.Sellers) && Model.Product.UserId == User.Identity.GetUserId())
+                    {
+                        <div class="actions text-center">
+                            <a href="/Products/Update/@Model.Product.Id" class="btn btn-primary">@ResourceKeys.update</a>
+                        </div>
+                    }
+                </div>
+                <div class="col-sm-7 col-md-8">
+                    <div class="info">
+
+                        <i class="favoriteBtn @favoriteBtnState glyphicon glyphicon-heart" data-action="@favoriteBtnAction" data-productId="@Model.Product.Id"></i>
+                        <a href="/Categories/details/@Model.Product.CategoryId" class="categoryName">@Model.Product.Category.Name</a>
+
+                        <h2 class="text-capitalize">@Model.Product.Name</h2>
+                        <div class="stars">
+                            @for (int i = 0; i < Model.RateInStars; i++)
+                            {
+                                <i class="glyphicon glyphicon-star"></i>
+                            }
+
+                            <span>(@Model.Product.Reviews.Count() @ResourceKeys.verifiedRating)</span>
+                        </div>
+
+                        <hr />
+                        <p class="price">
+                            <b>EGB</b>
+                            <span>@Model.Product.Price</span>
+                        </p>
+                        <hr />
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h5>@ResourceKeys.seller: <b><a href="/Users/UserAccount/@Model.Product.UserId">@Model.Product.User.FullName</a></b></h5>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <h5><b>@Model.Product.UnitsInStore</b> @ResourceKeys.piecesInStore</h5>
+                            </div>
+                        </div>
+
+                        <hr />
+
+                        @if (Model.Product.AvailableToSale == false || Model.Product.UnitsInStore < 1)
+                        {
+                            <div class="alert alert-warning">
+                                <p>
+                                    @ResourceKeys.notAvailableMsg
+                                </p>
+                            </div>
+                        }
+                        else
+                        {
+                            <button class="btn btn-primary addToCartBtn addToCart @btnState" data-productId="@Model.Product.Id" @btnState>
+                                <i class="glyphicon glyphicon-shopping-cart"></i> @ResourceKeys.addToCart
+                            </button>
+                        }
+
+                        <div class="shareBtns">
+                            <h5>@ResourceKeys.shareThisProduct</h5>
+
+                            <div class="sharethis-inline-share-buttons"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="ad">
+            <p class="lead">
+                @ResourceKeys.addYourAd
+                <br />
+                <b>@ResourceKeys.ad</b>
+            </p>
+        </div>
+
+        <div class="more">
+            <div class="row">
+                <div class="col-sm-9">
+                    <div class="details">
+                        <h2>@ResourceKeys.details</h2>
+                        <article>
+                            @Model.Product.Description
+                        </article>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="ad">
+                        <p class="lead">
+                            @ResourceKeys.addYourAd
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="moreItemsLikeThis">
+            <h3>@ResourceKeys.moreItemsLikeThis</h3>
+            <hr />
+
+            @if (Model.ProductsFromSameCategory.Count() == 0)
+            {
+                <div class="alert alert-info">
+                    <p class="lead">
+                        @ResourceKeys.sorryMsg
+                    </p>
+                </div>
+            }
+
+            <div class="row">
+                @foreach (var product in Model.ProductsFromSameCategory)
+                {
+                    <div class="col-sm-2">
+                        @Html.Partial("_Product", product)
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="moreProducts">
+            <h3>@ResourceKeys.moreProducts</h3>
+            <hr />
+
+            @if (Model.AnotherProducts.Count() == 0)
+            {
+                <div class="alert alert-info">
+                    <p class="lead">
+                        @ResourceKeys.sorryMsg
+                    </p>
+                </div>
+            }
+
+            <div class="row">
+                @foreach (var product in Model.AnotherProducts)
+                {
+                    <div class="col-sm-2">
+                        @Html.Partial("_Product", product)
+                    </div>
+                }
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="customersReviews">
+                    <h3>@ResourceKeys.verifiedCustomerFeedback</h3>
+                    <hr />
+
+                    <form action="/" method="post" id="commentForm">
+                        <div class="form-group stars">
+                            <i class="glyphicon glyphicon-star" data-position="1" data-productId="@Model.Product.Id"></i>
+                            <i class="glyphicon glyphicon-star" data-position="2" data-productId="@Model.Product.Id"></i>
+                            <i class="glyphicon glyphicon-star" data-position="3" data-productId="@Model.Product.Id"></i>
+                            <i class="glyphicon glyphicon-star" data-position="4" data-productId="@Model.Product.Id"></i>
+                            <i class="glyphicon glyphicon-star" data-position="5" data-productId="@Model.Product.Id"></i>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.TextAreaFor(r => r.RateForm.Comment, new { @class = "form-control", placeholder = ResourceKeys.reviewDescriptionPlacholder })
+                            @Html.ValidationMessageFor(r => r.RateForm.Comment)
+                        </div>
+
+                        <div class="form-group text-center">
+                            <button class="btn btn-primary" type="submit">
+                                <i class="glyphicon glyphicon-comment"></i> @ResourceKeys.save
+                            </button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="ad">
+                    <p class="lead">
+                        @ResourceKeys.addYourAd
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="customersReviews">
+                    <h3>@ResourceKeys.productReviews (@Model.Product.Reviews.Count())</h3>
+                    <hr />
+                    <div class="reviews">
+                        @if (Model.Product.Reviews.Count() == 0)
+                        {
+                            <div class="alert alert-info sorryMsg">
+                                <p class="lead text-center">
+                                    @ResourceKeys.sorryMsg
+                                </p>
+                            </div>
+                        }
+                        else
+                        {
+                            foreach (var review in Model.Product.Reviews.OrderByDescending(r => r.Id).Take(2))
+                            {
+                                @Html.Partial("_Review", review)
+                            }
+
+                            <a href="/Products/Reviews/@Model.Product.Id" class="seeAllLink text-uppercase">
+                                @ResourceKeys.seeAll
+                                <i class="glyphicon glyphicon-chevron-right"></i>
+                            </a>
+
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="ad">
+                    <p class="lead">
+                        @ResourceKeys.addYourAd
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+@section styles{
+    @Styles.Render("~/productDetails")
+}
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/js/productActions")
+    <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=62f6bb327db1160019f42504&product=inline-share-buttons" async="async"></script>
+}

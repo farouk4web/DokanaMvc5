@@ -1,0 +1,100 @@
+﻿@using Dokana.Resources
+
+@model Dokana.ViewModels.CPanelOrdersViewModel
+@{
+    ViewBag.Title = ResourceKeys.orders;
+    var previousPageNumber = Model.CurrentPageNumber - 1;
+    var nextPageNumber = Model.CurrentPageNumber + 1;
+
+}
+
+<div class="allOrders">
+    <h2>@ResourceKeys.orders ( <b>@Model.CountOfOrders</b> )</h2>
+
+    @if (Model.CountOfOrders == 0)
+    {
+        <div class="alert alert-info">
+            <p class="lead">
+                @ResourceKeys.sorryMsg
+            </p>
+        </div>
+    }
+    <div class="sorting_tools">
+        <div class="row">
+
+            <div class="col-sm-6">
+                <h5>@ResourceKeys.byOrderLevel</h5>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                        @ResourceKeys.byOrderLevel
+                        <span class="caret"></span>
+                    </button>
+
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="/ControlPanel/Orders?getOnly=all">@ResourceKeys.getAll</a>
+                        </li>
+                        <li>
+                            <a href="/ControlPanel/Orders?getOnly=IsNotPaid">@ResourceKeys.IsNotPaid</a>
+                        </li>
+                        <li>
+                            <a href="/ControlPanel/Orders?getOnly=IsPaid">@ResourceKeys.paid</a>
+                        </li>
+                        <li>
+                            <a href="/ControlPanel/Orders?getOnly=IsConfirmed">@ResourceKeys.confirmed</a>
+                        </li>
+                        <li>
+                            <a href="/ControlPanel/Orders?getOnly=IsShipping">@ResourceKeys.shipping</a>
+                        </li>
+                        <li>
+                            <a href="/ControlPanel/Orders?getOnly=IsDelivered">@ResourceKeys.delivered</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        @foreach (var order in Model.Orders)
+        {
+            <div class="col-sm-6">
+                @Html.Partial("_Order", order, new ViewDataDictionary(ViewData) { { "controllerName", "ControlPanel" } })
+            </div>
+        }
+    </div>
+
+    <nav aria-label="..." class="paginationBtns">
+        <ul class="pager">
+            @if (Model.CurrentPageNumber > 1)
+            {
+                <li class="previous">
+                    <a href="/ControlPanel/Orders?getOnly=@Model.GetOnly&pageNumber=@previousPageNumber">
+                        <span aria-hidden="true">&larr;</span> @ResourceKeys.older
+                    </a>
+                </li>
+            }
+
+            <li class="pageNumber">
+                @Model.CurrentPageNumber
+            </li>
+
+            @if (Model.CurrentPageNumber * 12 < Model.CountOfOrders)
+            {
+                <li class="next">
+                    <a href="/ControlPanel/Orders?getOnly=@Model.GetOnly&pageNumber=@nextPageNumber">
+                        @ResourceKeys.newer <span aria-hidden="true">&rarr;</span>
+                    </a>
+                </li>
+            }
+        </ul>
+    </nav>
+</div>
+
+@section styles {
+    @Styles.Render("~/allOrders")
+}

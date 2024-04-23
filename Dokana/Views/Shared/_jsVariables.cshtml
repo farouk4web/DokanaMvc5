@@ -1,0 +1,26 @@
+﻿@using System.Configuration;
+@using Dokana.Resources;
+
+<div class="js variables" hidden>
+
+    @* site currency *@
+    @if (UICulture == "ar-EG")
+    {
+        <span id="siteCurrencey" data-currencey="@ConfigurationManager.AppSettings["ar_currency"].ToString()"></span>
+    }
+    else
+    {
+        <span id="siteCurrencey" data-currencey="@ConfigurationManager.AppSettings["en_currency"].ToString()"></span>
+    }
+
+
+    <p id="signToAddProduct">@ResourceKeys.signToAddProduct</p>
+    <p id="errMsg">@ResourceKeys.errMsg</p>
+    <p id="removeCategoryWarningMsg">@ResourceKeys.removeCategoryWarningMsg</p>
+    <p id="requiredStarsMsg">@ResourceKeys.requiredStarsMsg</p>
+    <p id="warningMsg">@ResourceKeys.warningMsg</p>
+    <p id="isConfirmed">@ResourceKeys.orderIsConfirmed</p>
+    <p id="isShipping">@ResourceKeys.orderIsShipping</p>
+    <p id="isDelivered">@ResourceKeys.orderIsDelivered</p>
+
+</div>

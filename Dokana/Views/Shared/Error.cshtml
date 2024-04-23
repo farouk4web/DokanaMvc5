@@ -1,0 +1,16 @@
+﻿@using Dokana.Resources
+@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    ViewBag.Title = ResourceKeys.error;
+}
+<div class="has-error text-center">
+    <div class="container">
+
+        <div class="alert alert-info">
+            <h1 class="text-danger">@ResourceKeys.error</h1>
+            <h2 class="text-danger">@ResourceKeys.errorMsg</h2>
+        </div>
+
+    </div>
+</div>

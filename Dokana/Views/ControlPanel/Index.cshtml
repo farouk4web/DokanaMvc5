@@ -1,0 +1,70 @@
+﻿@using Dokana.Resources
+
+@model Dokana.ViewModels.DashboardViewModel
+@{
+    ViewBag.Title = ResourceKeys.dashboard;
+}
+<div class="dashboard">
+    <div class="statistics">
+        <h2>@ResourceKeys.siteStatistics</h2>
+
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="item">
+                    <span>@ResourceKeys.products</span>
+                    <b>@Model.ProductsCount</b>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="item">
+                    <span>@ResourceKeys.orders</span>
+                    <b>@Model.OrdersCount</b>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="item">
+                    <span>@ResourceKeys.users</span>
+                    <b>@Model.UsersCount</b>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="item">
+                    <span>@ResourceKeys.reviews</span>
+                    <b>@Model.ReviewsCount</b>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="topProducts">
+        <h2>@ResourceKeys.topSellingProducts</h2>
+        <div class="row">
+            @foreach (var product in Model.TopSellingProducts)
+            {
+                <div class="col-sm-4">
+                    @Html.Partial("_Product", product)
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="lastUsers">
+        <h2>@ResourceKeys.lastSignedUsers</h2>
+        <div class="row">
+            @foreach (var user in Model.LastUsers)
+            {
+                <div class="col-sm-3">
+                    @Html.Partial("_User", user)
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section styles{
+    @Styles.Render("~/dashboard")
+}

@@ -1,0 +1,66 @@
+﻿@using Dokana.Resources
+
+@model IEnumerable<Dokana.Models.CartItem>
+@{
+    ViewBag.Title = ResourceKeys.shoppingCart;
+}
+
+<div class="cartDetails">
+    <div class="container">
+
+        <div class="page-header">
+            <h2>( <b>@Model.Count()</b> ) @ResourceKeys.item </h2>
+            <a href="#" class="text-uppercase removeAllCartItems">@ResourceKeys.removeAll</a>
+        </div>
+
+        @if (Model.Count() > 0)
+        {
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="col-sm-6 item">
+                        @Html.Partial("_CartItem", item)
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="noItemsMsg text-center">
+                <i class="glyphicon glyphicon-shopping-cart center-block"></i>
+                <span>@ResourceKeys.shoppingCartNoItemsMsg</span>
+            </div>
+        }
+
+        @if (ViewBag.showMsg == true)
+        {
+            <div class="alert alert-warning">
+                <p class="lead">@ResourceKeys.allProductsNotAvailableMsg</p>
+            </div>
+        }
+
+        <div class="details">
+            <div class="row text-center">
+                <div class="col-sm-6">
+                    <b>@ResourceKeys.countOfProducts: </b>
+                    <span class="productsCount badge">@Model.Sum(i => i.Amount)</span>
+                </div>
+                <div class="col-sm-6">
+                    <b>@ResourceKeys.total: </b>
+                    <b class="price">
+                        <b>EGB</b>
+                        <span class="total badge">@ViewBag.totalPrice</span>
+                    </b>
+                </div>
+            </div>
+        </div>
+
+        @if (Model.Count() != 0)
+        {
+            <div class="text-center">
+                <a class="btn btn-primary" href="/Orders/New/">@ResourceKeys.createAnOrder</a>
+            </div>
+        }
+
+    </div>
+</div>

@@ -1,0 +1,128 @@
+﻿@using Dokana.Resources
+
+@model Dokana.ViewModels.ReviewsViewModel
+@{
+    ViewBag.Title = Model.Product.Name + " " + ResourceKeys.reviews;
+}
+
+<div class="reviews productDetails">
+    <div class="container">
+
+        <div class="page-header">
+            <h2 class="text-capitalize">@ResourceKeys.reviews (@Model.Product.Reviews.Count())</h2>
+            <span class="stars">
+                @for (int i = 0; i < 3; i++)
+                {
+                    <i class="glyphicon glyphicon-star"></i>
+                }
+                (@Model.Product.Reviews.Count() @ResourceKeys.verifiedRating)
+            </span>
+        </div>
+
+        <header>
+            <div class="row">
+
+                <div class="col-sm-4">
+                    <img src="@Model.Product.ImageSrc" alt="" class="img-responsive" />
+                </div>
+                <div class="col-sm-8">
+                    <div class="info">
+                        <a href="/Categories/details/@Model.Product.CategoryId" class="categoryName">@Model.Product.Category.Name</a>
+
+                        <h2 class="text-capitalize">@Model.Product.Name</h2>
+
+                        <hr />
+                        <b class="price">
+                            <span>EGB</span>
+                            @Model.Product.Price
+                        </b>
+                        <hr />
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h5>@ResourceKeys.seller: <b><a href="#">@Model.Product.User.FullName</a></b></h5>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <h5><b>@Model.Product.UnitsInStore</b> @ResourceKeys.piecesInStore</h5>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <p>@ResourceKeys.thisProductRatedBy @Model.Product.Reviews.Count() @ResourceKeys.user</p>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="stars">
+                                    @for (int i = 0; i < 3; i++)
+                                    {
+                                        <i class="glyphicon glyphicon-star"></i>
+                                    }
+                                    <span>(@Model.Product.Reviews.Count() @ResourceKeys.verifiedRating)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="/products/details/@Model.Product.Id" class="btn btn-primary">
+                            @ResourceKeys.goToProduct
+                            <i class="glyphicon glyphicon-chevron-right"></i>
+                            <i class="glyphicon glyphicon-chevron-right"></i>
+                            <i class="glyphicon glyphicon-chevron-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        @if (Model.Product.Reviews.OrderByDescending(p => p.Id).Count() == 0)
+        {
+            <div class="alert alert-info">
+                <p class="lead">
+                    @ResourceKeys.sorryMsg
+                </p>
+            </div>
+        }
+
+        <div class="row">
+            <div class="col-sm-9">
+                @foreach (var review in Model.Product.Reviews.OrderByDescending(p => p.Id).ToList())
+                {
+                    @Html.Partial("_Review", review)
+                }
+
+                <div class="ad">
+                    <p class="lead">
+                        @ResourceKeys.addYourAd
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+
+                <div class="ad">
+                    <p class="lead">
+                        @ResourceKeys.addYourAd
+                    </p>
+                </div>
+
+                @foreach (var product in Model.AnotherProducts)
+                {
+                    @Html.Partial("_Product", product)
+                }
+
+                <div class="ad">
+                    <p class="lead">
+                        @ResourceKeys.addYourAd
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section styles{
+    @Styles.Render("~/productDetails")
+}

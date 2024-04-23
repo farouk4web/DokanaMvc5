@@ -1,0 +1,52 @@
+﻿@using Dokana.Resources
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="@ResourceKeys.developerCopyrights" />
+    <meta name="description" content="@ResourceKeys.appMetaDescription" />
+    <title>@ViewBag.Title - @ResourceKeys.appName</title>
+    
+    @if (UICulture == "ar-EG")
+    {
+        @Styles.Render("~/Content/css_rtl")
+    }
+    else
+    {
+        @Styles.Render("~/Content/css")
+    }
+
+    @Styles.Render("~/fontAwesome")
+    
+    @RenderSection("styles", false)
+
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+
+    @Html.Action("GetNavbar", "Home")
+
+    <main>
+        @RenderBody()
+    </main>
+
+    @Html.Partial("_Footer")
+
+
+    @Html.Partial("_jsVariables")
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/js/bootstrap")
+    @Scripts.Render("~/js/bootbox")
+    @Scripts.Render("~/js/cartActions")
+    @Scripts.Render("~/js/favoritesActions")
+    @Scripts.Render("~/js/stylesMode")
+    @Scripts.Render("~/js/site")
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

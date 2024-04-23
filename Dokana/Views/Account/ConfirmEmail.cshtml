@@ -1,0 +1,16 @@
+﻿@using Dokana.Resources
+@{
+    ViewBag.Title = ResourceKeys.confirmEmail;
+}
+<div class="confirmEmail">
+    <div class="container">
+        <h2>@ViewBag.Title.</h2>
+
+        <div class="alert alert-success">
+            <p class="lead">
+                @ResourceKeys.successConfirmEmail @Html.ActionLink(ResourceKeys.login, "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+            </p>
+        </div>
+
+    </div>
+</div>

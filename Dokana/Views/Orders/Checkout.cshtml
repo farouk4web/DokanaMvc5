@@ -1,0 +1,82 @@
+﻿@using Dokana.Resources
+
+@using Dokana.Models
+@model Dokana.ViewModels.CheckoutViewModel
+@{
+    ViewBag.Title = ResourceKeys.checkout;
+}
+<div class="checkout">
+    <div class="container">
+        <form action="/Orders/Checkout" method="post" class="siteForm">
+
+            <div class="form-group">
+                <h3>@ResourceKeys.choosePaymentMethod</h3>
+                @Html.ValidationMessageFor(m => m.PaymentMethodId)
+
+                <div class="method">
+                    @Html.RadioButtonFor(m => m.PaymentMethodId, MethodsIDs.CashOnDelivaryId, new { id = MethodsIDs.CashOnDelivaryId })
+                    <label for="@MethodsIDs.CashOnDelivaryId">@ResourceKeys.cashOnDelivary</label>
+                    <p>
+                        @ResourceKeys.cashOnDelivaryDescription
+                    </p>
+                </div>
+
+                <div class="method">
+                    @Html.RadioButtonFor(m => m.PaymentMethodId, MethodsIDs.PaypalId, new { id = MethodsIDs.PaypalId, disabled = "disabled" })
+                    <label for="@MethodsIDs.PaypalId">@ResourceKeys.paypal</label>
+                    <p>
+                        @ResourceKeys.paypalDescription
+                    </p>
+
+                    @*<div class="paypal">
+                            <div class="form-group">
+                                @Html.TextBoxFor(m => m.Paypal.Email, new { @class = "form-control", placeholder = ResourceKeys.email })
+                                @Html.ValidationMessageFor(m => m.Paypal.Email)
+                            </div>
+
+                            <div class="form-group">
+                                @Html.TextBoxFor(m => m.Paypal.Password, new { @class = "form-control", placeholder = ResourceKeys.password })
+                                @Html.ValidationMessageFor(m => m.Paypal.Password, null, new { @class = "text-center" })
+                            </div>
+                        </div>*@
+                </div>
+
+                <div class="method">
+                    @Html.RadioButtonFor(m => m.PaymentMethodId, MethodsIDs.VisaCardId, new { id = MethodsIDs.VisaCardId, disabled = "disabled" })
+                    <label for="@MethodsIDs.VisaCardId">@ResourceKeys.visaCard</label>
+                    <p>
+                        @ResourceKeys.visaCardDescription
+                    </p>
+
+                    @*<div class="visaCard">
+                            <div class="form-group">
+                                @Html.TextBoxFor(m => m.VisaCard.Number, new { @class = "form-control", placeholder = ResourceKeys.number })
+                                @Html.ValidationMessageFor(m => m.VisaCard.Number)
+                            </div>
+
+                            <div class="form-group">
+                                @Html.TextBoxFor(m => m.VisaCard.Password, new { @class = "form-control", placeholder = ResourceKeys.password })
+                                @Html.ValidationMessageFor(m => m.VisaCard.Password)
+                            </div>
+                        </div>*@
+                </div>
+            </div>
+
+            <div class="form-group text-center">
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(m => m.OrderId)
+                <button type="submit" class="btn btn-primary">@ResourceKeys.checkout</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Styles {
+    @Styles.Render("~/siteForm")
+    @Styles.Render("~/checkout")
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/js/checkout")
+}

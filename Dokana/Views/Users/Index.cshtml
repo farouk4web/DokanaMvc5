@@ -1,0 +1,96 @@
+﻿@using Dokana.Resources
+@using Dokana.Models
+
+@model Dokana.ViewModels.CPanelUsersViewModel
+@{
+    ViewBag.Title = ResourceKeys.allUsersInSite;
+    var previousPageNumber = Model.CurrentPageNumber - 1;
+    var nextPageNumber = Model.CurrentPageNumber + 1;
+}
+
+<div class="users">
+    <h2>@ResourceKeys.allUsersInSite ( <b>@Model.CountOfUsers</b> @ResourceKeys.user )</h2>
+
+    <div class="sorting_tools">
+        <div class="row">
+
+            <div class="col-sm-6">
+                <h5>@ResourceKeys.sortUsers</h5>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                        @ResourceKeys.sortUsers
+                        <span class="caret"></span>
+                    </button>
+
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="/Users/Index">@ResourceKeys.getAll</a>
+                        </li>
+                        <li>
+                            <a href="/Users/Index?getOnly=@RoleName.SuperAdmins">@ResourceKeys.superAdmins</a>
+                        </li>
+                        <li>
+                            <a href="/Users/Index?getOnly=@RoleName.Admins">@ResourceKeys.admins</a>
+                        </li>
+                        <li>
+                            <a href="/Users/Index?getOnly=@RoleName.Sellers">@ResourceKeys.sellers</a>
+                        </li>
+                        <li>
+                            <a href="/Users/Index?getOnly=@RoleName.ShippingStaff">@ResourceKeys.shippingStaff</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    @if (Model.CountOfUsers == 0)
+    {
+        <div class="alert alert-info text-center">
+            <p class="lead">
+                @ResourceKeys.sorryMsg
+            </p>
+        </div>
+    }
+
+
+
+    <div class="row">
+        @foreach (var user in Model.Users)
+        {
+            <div class="col-sm-3">
+                @Html.Partial("_User", user)
+            </div>
+        }
+    </div>
+
+    <nav aria-label="..." class="paginationBtns">
+        <ul class="pager">
+            @if (Model.CurrentPageNumber > 1)
+            {
+                <li class="previous">
+                    <a href="/ControlPanel/Users?pageNumber=@previousPageNumber">
+                        <span aria-hidden="true">&larr;</span> @ResourceKeys.older
+                    </a>
+                </li>
+            }
+
+            <li class="pageNumber">
+                @Model.CurrentPageNumber
+            </li>
+
+            @if (Model.CurrentPageNumber * 12 < Model.CountOfUsers)
+            {
+                <li class="next">
+                    <a href="/ControlPanel/Users?pageNumber=@nextPageNumber">
+                        @ResourceKeys.newer <span aria-hidden="true">&rarr;</span>
+                    </a>
+                </li>
+            }
+        </ul>
+    </nav>
+</div>

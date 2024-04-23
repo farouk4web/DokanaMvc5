@@ -1,0 +1,30 @@
+﻿@using Dokana.Resources
+
+@model  Dokana.Models.Order
+@{
+    ViewBag.Title = ResourceKeys.oderedAt + " " + Model.DateOfCreate;
+}
+<div class="orderInDetails">
+
+    <div class="page-header">
+        <h3>@ResourceKeys.oderedAt: <time>@Model.DateOfCreate</time></h3>
+
+        <span>
+            @ResourceKeys.orderedBy:
+            <a href="/Users/UserAccount/@Model.UserId">
+                @Model.User.FullName
+            </a>
+        </span>
+    </div>
+
+    @Html.Partial("_DetailsOfOrder", Model)
+
+</div>
+
+@section styles {
+    @Styles.Render("~/orderDetails")
+}
+
+@section scripts {
+    @Scripts.Render("~/js/orderActions")
+}

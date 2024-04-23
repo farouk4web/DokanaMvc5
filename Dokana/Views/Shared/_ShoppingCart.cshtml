@@ -1,0 +1,35 @@
+﻿@using Dokana.Resources
+
+@model IEnumerable<Dokana.Models.CartItem>
+
+<ul class="nav navbar-nav navbar-right cart">
+    <li class="dropdown">
+
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <i class="glyphicon glyphicon-shopping-cart"></i>
+            <span> @ResourceKeys.cart</span>
+            <sup class="badge" id="cartItemsCount">@Model.Sum(i=>i.Amount)</sup>
+        </a>
+
+        <ul class="dropdown-menu">
+            <li>
+                <a href="/shoppingCart/" class="text-uppercase">@ResourceKeys.details</a>
+                <a href="#" class="text-uppercase pull-right removeAllCartItems">@ResourceKeys.removeAll</a>
+            </li>
+
+            @foreach (var item in Model)
+            {
+                <li class="item">
+                    @Html.Partial("_CartItem", item)
+                </li>
+            }
+
+            <li class="noItemsMsg text-center">
+                <i class="glyphicon glyphicon-shopping-cart center-block"></i>
+                <span>@ResourceKeys.shoppingCartNoItemsMsg</span>
+            </li>
+
+        </ul>
+    </li>
+
+</ul>

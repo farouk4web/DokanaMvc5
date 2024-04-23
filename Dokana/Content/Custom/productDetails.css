@@ -1,0 +1,117 @@
+﻿/* start productDetails */
+.productDetails .btn {
+    font-size: 20px;
+    margin: 30px 0;
+}
+.productDetails header {
+    background-color: var(--whiteColor);
+    margin-bottom: 15px;
+}
+.productDetails header img {
+    height: 420px;
+    width: 100%;
+    margin-left: 20px;
+}
+.productDetails .info {
+    position: relative;
+    padding: 15px;
+}
+.productDetails .info .favoriteBtn {
+    font-size: 25px;
+    padding: 5px;
+}
+.productDetails a.categoryName {
+    background: #791eb6;
+    color: #fff;
+    padding: 0px 10px;
+    border-radius: 9px;
+    font-weight: bold;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+.productDetails .info .stars i {
+    color: var(--color1);
+}
+.productDetails .info .stars span {
+    font-size: 13px;
+}
+.productDetails .info .price {
+    font-size: 18px;
+}
+.productDetails .info .addToCartBtn {
+    width: 100%;
+}
+.productDetails .shareBtns {
+    padding: 10px 15px;
+}
+.productDetails .details,
+.productDetails .moreProducts,
+.productDetails .moreItemsLikeThis {
+    background-color: var(--whiteColor);
+    padding: 15px;
+    margin-bottom: 15px;
+}
+.productDetails .moreProducts h3,
+.productDetails .moreItemsLikeThis h3 {
+    margin: 10px 0;
+}
+.productDetails .customersReviews {
+    background-color: var(--whiteColor);
+    padding: 15px;
+    margin-bottom: 15px;
+}
+.productDetails .customersReviews h3 {
+    margin: 10px 0;
+}
+.productDetails .customersReviews #commentForm textarea {
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 120px;
+    max-height: 120px;
+}
+.productDetails .customersReviews #commentForm .stars i {
+    font-size: 20px;
+}
+
+.productDetails .customersReviews #commentForm .stars i.active {
+    color: var(--color1);
+}
+.productDetails .customersReviews #commentForm .btn {
+    width: 50%;
+}
+.productDetails .customersReviews .seeAllLink {
+    color: var(--color1);
+    font-weight: bold;
+    text-decoration: none;
+    display: block;
+    margin-top: 15px;
+    margin-right: 10px;
+    font-size: 18px;
+    text-align: center;
+}
+.productDetails .customersReviews .reviews .rate {
+    border-bottom: 2px solid var(--blurFontColor);
+}
+.rate {
+    background-color: var(--whiteColor);
+    margin-bottom: 20px;
+    padding: 10px 15px;
+}
+.rate img {
+    display: inline-block;
+    margin-right: 15px;
+}
+.rate i {
+    color: var(--color1);
+}
+.rate p {
+    padding: 20px 10px;
+    margin: 0
+}
+/* end productDetails */
+
+@media (max-width: 767px) {
+    .productDetails header img {
+        margin: 0;
+    }
+}

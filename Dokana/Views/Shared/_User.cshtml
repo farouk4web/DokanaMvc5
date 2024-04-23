@@ -1,0 +1,7 @@
+﻿@model Dokana.Models.ApplicationUser
+
+<div class="user text-center @ViewBag.isAdmin @ViewBag.isSeller">
+    <a href="/Users/UserAccount/@Model.Id" class="windowLink"></a>
+    <img src="@Model.ProfileImageSrc" alt="" class="img-responsive" />
+    <h4>@Model.FullName</h4>
+</div>

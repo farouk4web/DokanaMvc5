@@ -1,0 +1,282 @@
+﻿@using Microsoft.AspNet.Identity
+@using Dokana.Models
+@using Dokana.Resources
+
+@model Dokana.ViewModels.UserAccountViewModel
+@{
+    ViewBag.Title = Model.User.FullName;
+}
+<div class="userAccount">
+    <div class="main_info">
+        <h2>@Model.User.FullName</h2>
+
+        <div class="row">
+            <div class="col-sm-4">
+                <img src="@Model.User.ProfileImageSrc" class="img-responsive" alt="Alternate Text" />
+            </div>
+
+            <div class="col-sm-8">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <tr>
+                            <td>@ResourceKeys.email</td>
+                            <td>@Model.User.Email</td>
+                        </tr>
+
+                        <tr>
+                            <td>@ResourceKeys.confirmEmailState</td>
+                            @if (Model.User.EmailConfirmed)
+                            {
+                                <td>
+                                    @ResourceKeys.confirmed
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    @ResourceKeys.notConfirmed
+                                </td>
+                            }
+                        </tr>
+
+                        <tr>
+                            <td>@ResourceKeys.phone</td>
+                            @if (Model.User.PhoneNumber == null)
+                            {
+                                <td>@ResourceKeys.noPhoneNumber</td>
+                            }
+                            else
+                            {
+                                <td>@Model.User.PhoneNumber</td>
+                            }
+                        </tr>
+
+                        <tr>
+                            <td>@ResourceKeys.confirmPhoneState</td>
+                            @if (Model.User.PhoneNumberConfirmed)
+                            {
+                                <td>
+                                    @ResourceKeys.confirmed
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    @ResourceKeys.notConfirmed
+                                </td>
+                            }
+                        </tr>
+
+                        <tr>
+                            <td>@ResourceKeys.signDate</td>
+                            <td>@Model.User.SignDate</td>
+                        </tr>
+                    </table>
+                </div>
+                @if (Model.User.Id != User.Identity.GetUserId())
+                {
+                    if (User.IsInRole(RoleName.SuperAdmins) || User.IsInRole(RoleName.Admins))
+                    {
+                        <div class="actions text-center">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="role">
+                                        @if (Model.IsSuperAdmin)
+                                        {
+                                            <form action="/users/RemoveUserFromRole/" method="post">
+                                                <div hidden>
+                                                    @Html.AntiForgeryToken()
+                                                    <input type="hidden" name="roleName" value="@RoleName.SuperAdmins" />
+                                                    <input type="hidden" name="id" value="@Model.User.Id" />
+                                                </div>
+
+                                                <button type="submit" class="btn btn-danger">@ResourceKeys.removeFromSuperAdmins</button>
+                                            </form>
+                                        }
+                                        else
+                                        {
+                                            <form action="/users/addUserToRole/" method="post">
+                                                <div hidden>
+                                                    @Html.AntiForgeryToken()
+                                                    <input type="hidden" name="roleName" value="@RoleName.SuperAdmins" />
+                                                    <input type="hidden" name="id" value="@Model.User.Id" />
+                                                </div>
+
+                                                <button type="submit" class="btn btn-success">@ResourceKeys.addToSuperAdmins</button>
+                                            </form>
+                                        }
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="role">
+                                        @if (Model.IsAdmin)
+                                        {
+                                            <form action="/users/RemoveUserFromRole/" method="post">
+                                                <div hidden>
+                                                    @Html.AntiForgeryToken()
+                                                    <input type="hidden" name="roleName" value="@RoleName.Admins" />
+                                                    <input type="hidden" name="id" value="@Model.User.Id" />
+                                                </div>
+
+                                                <button type="submit" class="btn btn-danger">@ResourceKeys.removeFromAdmins</button>
+                                            </form>
+                                        }
+                                        else
+                                        {
+                                            <form action="/users/addUserToRole/" method="post">
+                                                <div hidden>
+                                                    @Html.AntiForgeryToken()
+                                                    <input type="hidden" name="roleName" value="@RoleName.Admins" />
+                                                    <input type="hidden" name="id" value="@Model.User.Id" />
+                                                </div>
+
+                                                <button type="submit" class="btn btn-success">@ResourceKeys.addToAdmins</button>
+                                            </form>
+                                        }
+                                    </div>
+                                </div>
+
+
+                                <div class="col-sm-6">
+                                    <div class="role">
+                                        @if (Model.IsSeller)
+                                        {
+                                            <form action="/users/RemoveUserFromRole/" method="post">
+                                                <div hidden>
+                                                    @Html.AntiForgeryToken()
+                                                    <input type="hidden" name="roleName" value="@RoleName.Sellers" />
+                                                    <input type="hidden" name="id" value="@Model.User.Id" />
+                                                </div>
+
+                                                <button type="submit" class="btn btn-danger">@ResourceKeys.removeFromSellers</button>
+                                            </form>
+                                        }
+                                        else
+                                        {
+                                            <form action="/users/addUserToRole/" method="post">
+                                                <div hidden>
+                                                    @Html.AntiForgeryToken()
+                                                    <input type="hidden" name="roleName" value="@RoleName.Sellers" />
+                                                    <input type="hidden" name="id" value="@Model.User.Id" />
+                                                </div>
+
+                                                <button type="submit" class="btn btn-success">@ResourceKeys.addToSellers</button>
+                                            </form>
+                                        }
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="role">
+                                        @if (Model.IsShippingStaff)
+                                        {
+                                            <form action="/users/RemoveUserFromRole/" method="post">
+                                                <div hidden>
+                                                    @Html.AntiForgeryToken()
+                                                    <input type="hidden" name="roleName" value="@RoleName.ShippingStaff" />
+                                                    <input type="hidden" name="id" value="@Model.User.Id" />
+                                                </div>
+
+                                                <button type="submit" class="btn btn-danger">@ResourceKeys.removeFromShippingStaff</button>
+                                            </form>
+                                        }
+                                        else
+                                        {
+                                            <form action="/users/addUserToRole/" method="post">
+                                                <div hidden>
+                                                    @Html.AntiForgeryToken()
+                                                    <input type="hidden" name="roleName" value="@RoleName.ShippingStaff" />
+                                                    <input type="hidden" name="id" value="@Model.User.Id" />
+                                                </div>
+
+                                                <button type="submit" class="btn btn-success">@ResourceKeys.addToShippingStaff</button>
+                                            </form>
+                                        }
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    }
+                }
+
+            </div>
+        </div>
+    </div>
+
+    <div class="favorites">
+        <h2>@ResourceKeys.favorites <b>(@Model.User.Favorites.Count())</b></h2>
+
+        @if (Model.User.Favorites.Count() == 0)
+        {
+            <div class="alert alert-info">
+                <p class="lead">
+                    @ResourceKeys.sorryMsg
+                </p>
+            </div>
+        }
+
+        <div class="row">
+            @foreach (var item in Model.User.Favorites)
+            {
+                <div class="col-sm-3">
+                    @Html.Partial("_Product", item.Product, new ViewDataDictionary(ViewData) { { "currentUserId", User.Identity.GetUserId() } })
+                </div>
+            }
+        </div>
+
+    </div>
+
+    <div class="cartItems">
+        <h2>@ResourceKeys.cartItems <b>(@Model.User.CartItems.Where(i => i.OrderId == null).Count())</b></h2>
+
+        @if (Model.User.CartItems.Where(i => i.OrderId == null).Count() == 0)
+        {
+            <div class="alert alert-info">
+                <p class="lead">
+                    @ResourceKeys.sorryMsg
+                </p>
+            </div>
+        }
+
+        <div class="row">
+            @foreach (var item in Model.User.CartItems.Where(i => i.OrderId == null))
+            {
+                <div class="col-sm-6 item">
+                    @Html.Partial("_CartItem", item)
+                </div>
+            }
+        </div>
+
+    </div>
+
+    <div class="orders">
+        <h2>@ResourceKeys.orders <b>(@Model.User.Orders.Count())</b></h2>
+
+        @if (Model.User.Orders.Count() == 0)
+        {
+            <div class="alert alert-info">
+                <p class="lead">
+                    @ResourceKeys.sorryMsg
+                </p>
+            </div>
+        }
+
+        <div class="row">
+            @foreach (var order in Model.User.Orders.OrderByDescending(o => o.DateOfCreate))
+            {
+                <div class="col-sm-6">
+                    @Html.Partial("_Order", order)
+                </div>
+            }
+        </div>
+    </div>
+
+
+</div>
+
+
+@section styles {
+    @Styles.Render("~/allOrders")
+}

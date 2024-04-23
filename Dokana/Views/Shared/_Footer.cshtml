@@ -1,0 +1,23 @@
+﻿@using Dokana.Resources;
+
+<footer class="text-center">
+    <div class="container">
+        <div class="modes">
+            <i id="setDarkMode" class="fa fa-moon-o" title="@ResourceKeys.setDarkMode"></i>
+            <i id="setNormalMode" class="fa fa-sun-o" title="@ResourceKeys.setLightMode"></i>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <p>
+                    &copy; @DateTime.Now.Year - <a href="/home/index/">@ResourceKeys.appName</a>
+                </p>
+            </div>
+            <div class="col-sm-6">
+                <p>
+                    @ResourceKeys.developerCopyrights <a href="https://linkedin/in/farouk4web">@ResourceKeys.developer</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>

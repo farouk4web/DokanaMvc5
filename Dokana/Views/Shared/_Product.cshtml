@@ -1,0 +1,35 @@
+﻿@using Microsoft.AspNet.Identity
+@using Dokana.AppMethods
+
+@model Dokana.Models.Product
+@{
+    var favoriteBtnState = "";
+    var favoriteBtnAction = "add";
+
+    if (User.Identity.IsAuthenticated)
+    {
+        string currentUserId = User.Identity.GetUserId();
+        //var isFavoriteItem = ProjectMethods.IsFavoriteProduct(Model.Id, currentUserId);
+
+        ProjectMethods m = new ProjectMethods();
+        var isFavoriteItem = m.IsFavoriteProduct(Model.Id, currentUserId);
+
+        if (isFavoriteItem == true)
+        {
+            favoriteBtnState = "active";
+            favoriteBtnAction = "remove";
+        }
+    }
+}
+
+<div class="product text-center">
+    <i class="glyphicon glyphicon-heart favoriteBtn @favoriteBtnState" data-action="@favoriteBtnAction" data-productId="@Model.Id"></i>
+    <a href="/products/details/@Model.Id" class="windowLink"></a>
+
+    <img src="@Model.ImageSrc" alt="" class="img-responsive" />
+    <h5 class="productName text-capitalize">@Model.Name</h5>
+    <b class="price">
+        <b>EGB</b>
+        <span>@Model.Price</span>
+    </b>
+</div>

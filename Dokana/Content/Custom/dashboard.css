@@ -1,0 +1,18 @@
+﻿.dashboard .statistics .item {
+    margin-bottom: 25px;
+    padding: 20px;
+    background-color: var(--whiteColor);
+    border-radius: 20px;
+    border-bottom: 2px solid var(--color1);
+}
+
+.dashboard .statistics .item span {
+    display: block;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.dashboard .statistics .item b {
+    display: block;
+    font-size: 22px;
+}

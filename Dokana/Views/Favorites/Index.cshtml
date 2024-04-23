@@ -1,0 +1,35 @@
+﻿@using Microsoft.AspNet.Identity
+@using Dokana.Resources
+
+@model IEnumerable<Dokana.Models.Favorite>
+@{
+    ViewBag.Title = ResourceKeys.favorites;
+}
+
+<div class="favorites">
+    <div class="container">
+        <div class="page-header">
+            <h2>@ResourceKeys.favorites</h2>
+            <h5><b>@Model.Count()</b> @ResourceKeys.product</h5>
+        </div>
+
+        @if (Model.Count() == 0)
+        {
+            <div class="alert alert-info">
+                <p class="lead">
+                    @ResourceKeys.sorryMsg
+                </p>
+            </div>
+        }
+
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-sm-3">
+                    @Html.Partial("_Product", item.Product)
+                </div>
+            }
+        </div>
+
+    </div>
+</div>

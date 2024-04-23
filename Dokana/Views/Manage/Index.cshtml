@@ -1,0 +1,125 @@
+﻿@using Dokana.Resources
+@model Dokana.ViewModels.IndexViewModel
+@{
+    ViewBag.Title = Model.User.FullName;
+}
+<div class="manage">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-sm-4">
+                <aside>
+                    <div class="text-center">
+                        <img src="@Model.User.ProfileImageSrc" class="img-responsive center-block" alt="@Model.User.FullName" />
+                        <h2>@Model.User.FullName</h2>
+                    </div>
+
+                    <hr />
+
+                    <div>
+                        <b class="text-left">@ResourceKeys.accountPassword: </b>
+                        @Html.ActionLink(ResourceKeys.changePassword, "ChangePassword")
+                    </div>
+
+                    <hr />
+
+                    <div class="phone">
+                        <b>@ResourceKeys.phoneNumber: </b>
+                        @if (Model.User.PhoneNumber != null)
+                        {
+                            <span>[@Model.User.PhoneNumber]</span>
+
+                            <div class="text-center">
+                                [ @Html.ActionLink(ResourceKeys.change, "AddPhoneNumber")
+                                ---
+                                <form action="/Manage/RemovePhoneNumber/" method="post" style="display: inline;">
+                                    @Html.AntiForgeryToken()
+                                    <input type="submit" value="@ResourceKeys.remove" class="btn-link" />
+                                </form>
+                                ]
+                            </div>
+                        }
+                        else
+                        {
+                            <span>@ResourceKeys.noPhoneNumber - </span>
+                            @Html.ActionLink(ResourceKeys.add, "AddPhoneNumber")
+                        }
+                    </div>
+                </aside>
+            </div>
+
+            <div class="col-sm-8">
+                <section>
+                    <h2>@ResourceKeys.personalInformation</h2>
+                    <hr />
+
+                    <form action="/Manage/UpdatePersonalInfo/" method="post" class="siteForm">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.User.FullName)
+                            @Html.TextBoxFor(m => m.User.FullName, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.User.FullName)
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.User.SignDate)
+                                    <input type="datetime" value="@Model.User.SignDate" class="form-control" readonly />
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.User.Email)
+                                    <input type="email" value="@Model.User.Email" class="form-control" readonly />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.AntiForgeryToken()
+                            <button type="submit" class="btn btn-primary">
+                                @ResourceKeys.save
+                            </button>
+                        </div>
+                    </form>
+                </section>
+
+                <section>
+                    <h2>@ResourceKeys.accountPhoto</h2>
+                    <hr />
+
+                    <form action="/Manage/UpdateAccountImage/" method="post" enctype="multipart/form-data" class="siteForm">
+
+                        <div class="form-group">
+                            <p>
+                                @ResourceKeys.userImageLabel
+                            </p>
+
+                            <label for="newAccounPhoto" class="pictureButton  center-block">
+                                <i class="glyphicon glyphicon-picture" title="choose photo"></i>
+                            </label>
+
+                            <input type="file" name="newAccounPhoto" id="newAccounPhoto" />
+                        </div>
+
+                        <div class="form-group">
+                            @Html.AntiForgeryToken()
+                        </div>
+                    </form>
+                </section>
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+@section styles{
+    @Styles.Render("~/siteForm")
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

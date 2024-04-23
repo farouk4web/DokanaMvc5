@@ -1,0 +1,220 @@
+﻿@using Dokana.Resources
+@using Dokana.Models
+
+@model Dokana.Models.Order
+@{
+    var paymentMethodName = ResourceKeys.cashOnDelivary;
+    switch (Model.PaymentMethodId)
+    {
+        case MethodsIDs.CashOnDelivaryId:
+            paymentMethodName = ResourceKeys.cashOnDelivary;
+            break;
+
+        case MethodsIDs.VodafoneCashId:
+            paymentMethodName = ResourceKeys.vodafoneCash;
+            break;
+
+        case MethodsIDs.PaypalId:
+            paymentMethodName = ResourceKeys.paypal;
+            break;
+
+        case MethodsIDs.VisaCardId:
+            paymentMethodName = ResourceKeys.visaCard;
+            break;
+
+        default:
+            paymentMethodName = ResourceKeys.notPaidOrder;
+            break;
+    }
+}
+
+<div class="row">
+    <div class="col-sm-7">
+        @foreach (var item in Model.CartItems)
+        {
+            @Html.Partial("_CartItem", item)
+        }
+    </div>
+
+    <div class="col-sm-5">
+
+        <div class="details">
+            <h4>@ResourceKeys.orderLevels</h4>
+
+            @if (Model.IsPaid == true)
+            {
+                <span>@ResourceKeys.orderLevelsInfo</span>
+
+                <div class="item">
+                    @if (Model.IsConfirmed)
+                    {
+                        <b>1</b> <span class="badge active">@ResourceKeys.orderIsConfirmed</span>
+                    }
+                    else
+                    {
+                        <b>1</b> <span class="badge" id="js_confirm_Order" data-order_id="@Model.Id">@ResourceKeys.confirmOrder</span>
+                    }
+
+                </div>
+
+                <div class="item">
+                    @if (Model.IsShipping)
+                    {
+                        <b>2</b> <span class="badge active">@ResourceKeys.orderIsShipping</span>
+                    }
+                    else
+                    {
+                        <b>2</b> <span class="badge" id="js_shipping_Order" data-order_id="@Model.Id">@ResourceKeys.shippingOrder</span>
+                    }
+                </div>
+
+                <div class="item">
+                    @if (Model.IsDelivered)
+                    {
+                        <b>3</b> <span class="badge active">@ResourceKeys.orderIsDelivered</span>
+                    }
+                    else
+                    {
+                        <b>3</b> <span class="badge" id="js_delivered_Order" data-order_id="@Model.Id">@ResourceKeys.deliveredOrder</span>
+                    }
+                </div>
+            }
+            else
+            {
+                <p>
+                    @ResourceKeys.notPaidOrderMsg
+                </p>
+            }
+
+        </div>
+
+        <br />
+
+        <div class="details">
+
+            <div class="item">
+                <b>@ResourceKeys.paymentMethod: </b>
+                <span>@paymentMethodName</span>
+            </div>
+
+            <div class="item">
+                <b>@ResourceKeys.cartItems: </b>
+                <span>@Model.CartItems.Sum(i => i.Amount) @ResourceKeys.item</span>
+            </div>
+
+            <div class="item">
+                <b>@ResourceKeys.orderedTo: </b>
+                <span class="text-capitalize">@Model.FullName</span>
+            </div>
+
+            <div class="item">
+                <b>@ResourceKeys.oderedAt: </b>
+                <span>@Model.DateOfCreate</span>
+            </div>
+
+            <div class="item">
+                <b>@ResourceKeys.phone: </b>
+                <span>@Model.Phone</span>
+            </div>
+
+            <div class="item">
+                <b>@ResourceKeys.country: </b>
+                <span>@Model.Country</span>
+            </div>
+
+            <div class="item">
+                <b>@ResourceKeys.region: </b>
+                <span>@Model.Region</span>
+            </div>
+
+            <div class="item">
+                <b>@ResourceKeys.city: </b>
+                <span>@Model.City</span>
+            </div>
+
+            <div class="item">
+                <b>@ResourceKeys.street: </b>
+                <span>@Model.Street</span>
+            </div>
+
+            <div class="item">
+                <b>@ResourceKeys.moreAboutAddress: </b>
+                <span>@Model.MoreAboutAddress</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="statistics">
+    <div class="row">
+        <div class="col-sm-6">
+            <p>
+                @ResourceKeys.total:
+                <span class="price">
+                    <span>@Model.Total</span>
+                    <b>EGB</b>
+                </span>
+            </p>
+
+            <p>
+                @ResourceKeys.shippingAmount:
+                <span class="price">
+                    <span>@Model.ShippingAmount</span>
+                    <b>EGB</b>
+                </span>
+            </p>
+
+            @if (Model.PaymentMethodId != null && Model.PaymentMethodFee != 0)
+            {
+                <p>
+                    @paymentMethodName :
+                    <span class="price">
+                        <span>@Model.PaymentMethodFee</span>
+                        <b>EGB</b>
+                    </span>
+                </p>
+            }
+
+            <p>
+                @ResourceKeys.grandTotal:
+                <span class="price">
+                    <span>@Model.GrandTotal</span>
+                    <b>EGB</b>
+                </span>
+            </p>
+
+        </div>
+
+        <div class="col-sm-6">
+            @if (Model.IsDone || Model.IsPaid)
+            {
+                <div class="alert alert-info">
+                    <p>
+                        <b>@ResourceKeys.cancelOrder</b>
+                        @ResourceKeys.cancelOrderMsgNo
+                    </p>
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-info">
+                    <p>
+                        <b>@ResourceKeys.cancelOrder</b>
+                        @ResourceKeys.cancelOrderInfoMsg
+                    </p>
+                </div>
+
+                <button type="button" class="btn btn-danger" id="js_remove_order" data-order_id="@Model.Id">
+                    @ResourceKeys.cancelOrder
+                </button>
+
+                <form action="/Orders/CancelOrder/" method="post" id="cancel_order_form" hidden>
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="id" value="@Model.Id" />
+                    <input type="hidden" name="returnUrl" value="@Request.Url" />
+                </form>
+            }
+        </div>
+
+    </div>
+</div>

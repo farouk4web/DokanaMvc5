@@ -1,0 +1,86 @@
+﻿/* start site form */
+form.siteForm {
+    background-color: var(--whiteColor);
+    width: 50%;
+    padding: 20px;
+    margin: auto;
+    margin-top: 30px;
+    border: 1px solid var(--color1);
+    border-radius: 30px;
+}
+form.siteForm input[type='checkbox'] {
+    height: auto;
+}
+form.siteForm textarea {
+    height: 200px;
+    width: 100%;
+}
+form.siteForm .pictureButton i {
+    font-size: 18px;
+    margin-right: 10px;
+}
+form.siteForm .pictureButton label {
+    cursor: pointer;
+}
+form.siteForm .operationBtn {
+    width: auto;
+    font-size: 20px;
+    border: 0;
+}
+form.siteForm .inputNumber {
+    display: inline-block;
+    width: 100px;
+    text-align: center;
+}
+form.siteForm .group label {
+    display: block
+}
+form.siteForm .group span {
+    display: block;
+}
+form.siteForm button[type='submit'] {
+    width: 100%;
+}
+
+form.siteForm label {
+    cursor: pointer;
+    font-weight: normal;
+}
+form.siteForm input[type="radio"] {
+    height: auto;
+}
+
+.radio, .checkbox {
+    margin-top:0;
+}
+
+form.siteForm input[type='file']{
+   display: none;
+}
+
+.manage form.siteForm .pictureButton i {
+    font-size: 80px;
+    cursor: pointer;
+}
+.form-control[disabled],
+.form-control[readonly],
+fieldset[disabled] .form-control {
+    background-color: var(--fontColor);
+    color: var(--bgColor);
+}
+
+.manage .siteForm,
+.cPanel .siteForm {
+    width: 90%;
+}
+
+
+@media (max-width: 767px) {
+
+    form.siteForm ,
+    .cPanel .siteForm {
+        width: 100%;
+    }
+
+}
+/* end site form */
